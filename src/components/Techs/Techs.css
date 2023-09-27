@@ -1,0 +1,76 @@
+.techs {
+    min-height: 625px;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.techs__title {
+    width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    font-size: calc(18px + (22 - 18)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: calc(-0.72px + (-0.88 + 0.72)*((100vw - 320px)/(1280 - 320)));
+    margin: 0;
+    padding-bottom: calc(28px + (23 - 28)*((100vw - 320px)/(1280 - 320)));
+    margin-top: calc(70px + (100 - 70)*((100vw - 320px)/(1280 - 320)));
+}
+
+.techs__subtitle {
+    text-align: center;
+    font-size: calc(30px + (50 - 30)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: calc(-1.2px + (-2 + 1.2)*((100vw - 320px)/(1280 - 320)));
+    margin: 90px 0 26px 0;
+    width: calc(292px + (600 - 292)*((100vw - 320px)/(1280 - 320)));
+}
+
+.techs__text {
+    text-align: center;
+    font-size: calc(11px + (14 - 11)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: calc(16px + (20 - 16)*((100vw - 320px)/(1280 - 320)));
+    letter-spacing: calc(-0.44px + (-0.56 + 0.44)*((100vw - 320px)/(1280 - 320)));
+    width: calc(292px + (460 - 292)*((100vw - 320px)/(1280 - 320)));
+    margin: 0;
+    margin-bottom: calc(50px + (100 - 50)*((100vw - 320px)/(1280 - 320)));
+}
+
+.techs__lists {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 100px;
+}
+
+.techs__list {
+    width: calc(84px + (90 - 84)*((100vw - 320px)/(1280 - 320)));
+    height: calc(57px + (60 - 57)*((100vw - 320px)/(1280 - 320)));
+    border-radius: 10px;
+    background: #E8E8E8;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(12px + (14 - 12)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: calc(-0.48px + (-0.56 + 0.48)*((100vw - 320px)/(1280 - 320)));
+}
+
+@media screen and (max-width: 420px) {
+    .techs__subtitle {
+        line-height: normal;
+        margin: 60px 0 24px 0;
+    }
+
+    .techs__lists {
+        flex-wrap: wrap;
+        max-width: 178px;
+    }
+}

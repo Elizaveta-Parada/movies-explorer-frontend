@@ -1,0 +1,88 @@
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-me__area {
+    width: calc(292px + (1140 - 292)*((100vw - 320px)/(1280 - 320)));
+    display: grid;
+    grid-template-areas:
+        "info photo"
+        "link photo";
+    margin-top: calc(60px + (66 - 60)*((100vw - 320px)/(1280 - 320)));
+    column-gap: 270px;
+}
+
+.about-me__title {
+    width: calc(292px + (1140 - 292)*((100vw - 320px)/(1280 - 320)));
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    font-size: calc(18px + (22 - 18)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: calc(-0.72px + (-0.88 + 0.72)*((100vw - 320px)/(1280 - 320)));
+    margin: 0;
+    padding-bottom: calc(28px + (23 - 28)*((100vw - 320px)/(1280 - 320)));
+    margin-top: calc(70px + (110 - 70)*((100vw - 320px)/(1280 - 320)));
+}
+
+.about-me__info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    gap: calc(20px + (18 - 20)*((100vw - 320px)/(1280 - 320)));
+}
+
+.about-me__info-link {
+    grid-area: link;
+    display: flex;
+    align-items: flex-end;
+}
+
+.about-me__info-title {
+    margin: 0;
+    font-size: calc(30px + (50 - 30)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: calc(-1.2px + (-2 + 1.2)*((100vw - 320px)/(1280 - 320)));
+}
+
+.about-me__info-subtitle {
+    margin: 0;
+    font-size: calc(11px + (18 - 11)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 500;
+    line-height: calc(16px + (20 - 16)*((100vw - 320px)/(1280 - 320)));
+}
+
+.about-me__info-text {
+    margin: 0;
+    font-size: calc(11px + (14 - 11)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: calc(16px + (22 - 16)*((100vw - 320px)/(1280 - 320)));
+    padding-top: 8px;
+
+}
+
+.about-me__info-photo {
+    grid-area: photo;
+    width: 270px;
+    height: 327px
+}
+
+@media screen and (max-width: 420px) {
+    .about-me__area {
+        grid-template-areas:
+            "photo"
+            "info"
+            "link";
+        gap: 40px;
+    }
+
+    .about-me__info-title {
+        line-height: normal;
+    }
+
+    .about-me__info-text {
+        padding-top: 0;
+    }
+}

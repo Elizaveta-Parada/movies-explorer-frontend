@@ -1,0 +1,32 @@
+.promo {
+    background-color: #465DFF;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    min-height: 524px;
+}
+
+.promo__title {
+    margin: 0;
+    color: #FFF;
+    font-size: calc(31px + (50 - 31)*((100vw - 320px)/(1280 - 320)));
+    font-weight: 400;
+    line-height: calc(39px + (58 - 39)*((100vw - 320px)/(1280 - 320)));
+    letter-spacing: calc(-2px + (-1.24 + 2)*((100vw - 320px)/(1280 - 320)));
+    width: calc(300px + (730 - 300)*((100vw - 320px)/(1280 - 320)));
+    display: flex;
+    text-align: center;
+}
+
+.promo__logo {
+    width: calc(248px + (320 - 248)*((100vw - 320px)/(1280 - 320)));
+    height: calc(248px + (320 - 248)*((100vw - 320px)/(1280 - 320)));
+    flex-shrink: 0;
+    z-index: -2;
+    position: absolute;
+    top: calc(142px + (82 - 142)*((100vw - 320px)/(1280 - 320)));
+    left: calc(36px + (480 - 36)*((100vw - 320px)/(1280 - 320)));
+}
