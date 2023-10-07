@@ -2,27 +2,27 @@
     background: #465DFF;
     width: calc(320px + (1280 - 320)*((100vw - 320px)/(1280 - 320)));
     max-width: 1280px;
-    min-height: 74px;
     margin: 0 auto;
     color: #FFF;
-    display: flex;
-    justify-content: space-between;
 }
 
+.header__contant {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: auto;
+    min-height: 74px;
+}
 .header__logo {
     width: 38px;
     height: 38px;
-    margin: 0;
     margin-top: 18px;
-    margin-left: calc(14px + (70 - 14)*((100vw - 320px)/(1280 - 320)));
 }
 .header__container {
-    width: 183px;
     display: flex;
     gap: 30px;
     justify-content: space-between;
     align-items: center;
-    margin-right: calc(24px + (70 - 24)*((100vw - 320px)/(1280 - 320)));
 }
 
 .header__link {
@@ -39,6 +39,7 @@
     background: #2BE080;
     text-decoration: none;
     width: calc(54px + (76 - 54)*((100vw - 320px)/(768 - 320)));
+    max-width: 76px;
     min-width: 54px;
     height: calc(26px + (32 - 26)*((100vw - 320px)/(768 - 320)));
     border: none;

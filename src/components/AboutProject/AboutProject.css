@@ -1,19 +1,21 @@
 .about-project {
-    width: 100%;
+    max-width: 1280px;
     min-height: 608px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
 }
 
 .about-project__title {
+    max-width: 1140px;
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
     border-bottom: 1px solid rgba(0, 0, 0, 1);
     font-size: 22px;
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.88px;
-    margin: 0;
+    margin: 0 auto;
     padding-bottom: 23px;
     margin-top: calc(70px + (110 - 70)*((100vw - 320px)/(1280 - 320)));
 }
@@ -22,11 +24,12 @@
     list-style-type: none;
     display: flex;
     gap: 51px;
-    margin: auto;
+    margin: 0 auto;
     padding: 0;
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
     margin-top: 70px;
     margin-bottom: 110px;
+    max-width: 1140px;
 }
 
 .table__cell {
@@ -56,6 +59,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     margin-bottom: calc(69px + (100 - 69)*((100vw - 320px)/(1280 - 320)));
+    max-width: 1140px;
 }
 
 .grid__item {
