@@ -7,13 +7,15 @@ import './Movies.css'
 
 function Movies() {
     return (
-        <section className="movies">
+        <>
             <HeaderAuth />
             <SearchForm />
-            <MoviesCardList />
+            <section className="movies">
+                <MoviesCardList />
+            </section>
             <Preloader />
             <Footer />
-        </section>
+        </>
     );
 }
 

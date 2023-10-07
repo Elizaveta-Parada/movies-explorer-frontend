@@ -3,12 +3,12 @@
     margin: auto;
     max-width: 1140px;
     max-height: 1325px;
+    margin-top: 5px;
 }
 
 .movies__list {
     padding: 0;
     margin: 0;
-    margin-top: calc(40px + (70 - 40)*((100vw - 320px)/(1280 - 320)));
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -19,24 +19,24 @@
 
 @media screen and (max-width: 780px) {
     .movies__list {
-        margin-top: 71px;
         grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
         grid-gap: 36px 30px;
     }
 
     .movies__card-list {
         width: 708px;
+        margin-top: 78px;
     }
 }
 
 @media screen and (max-width: 400px) {
     .movies__card-list {
         width: 300px;
+        margin-top: 50px;
     }
 
     .movies__list {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        margin-top: 40px;
         gap: 20px;
     }
 }

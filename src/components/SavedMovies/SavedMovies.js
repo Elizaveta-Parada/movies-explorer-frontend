@@ -7,11 +7,15 @@ import './SavedMovies.css'
 
 function SavedMovies() {
     return (
-        <section className="saved__movies">
+        <>
             <HeaderAuth />
             <SearchForm />
-            <section className="movies__card-list">
+            <section className="saved__movies">
+                <section className="movies__card-list">
                 <ul className="movies__list">
+                    <li>
+                        <MoviesCard />
+                    </li>
                     <li>
                         <MoviesCard />
                     </li>
@@ -23,8 +27,9 @@ function SavedMovies() {
                     </li>
                 </ul>
             </section>
+            </section>
             <Footer />
-        </section>
+        </>
     );
 }
 

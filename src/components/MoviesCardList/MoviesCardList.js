@@ -20,22 +20,13 @@ function MoviesCardList() {
         <li>
           <MoviesCard />
         </li>
-        {/* <li>
-          <MoviesCard />
-        </li>
         <li>
           <MoviesCard />
         </li>
         <li>
           <MoviesCard />
-        </li> */}
-        {/* <li>
-          <MoviesCard />
         </li>
         <li>
-          <MoviesCard />
-        </li> */}
-        {/* <li>
           <MoviesCard />
         </li>
         <li>
@@ -52,7 +43,16 @@ function MoviesCardList() {
         </li>
         <li>
           <MoviesCard />
-        </li> */}
+        </li>
+        <li>
+          <MoviesCard />
+        </li>
+        <li>
+          <MoviesCard />
+        </li>
+        <li>
+          <MoviesCard />
+        </li>
       </ul>
     </section>
   );

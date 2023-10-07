@@ -49,7 +49,7 @@
 }
 
 .profile__button {
-    margin-top: 220px;
+    margin-top: 205px;
     margin-bottom: 16px;
     text-align: center;
     font-size: 13px;
@@ -71,4 +71,30 @@
 
 .profile__massege {
     border-top: 1px solid #E8E8E8;;
+}
+
+@media screen and (max-width: 800px) {
+    .profile__title {
+        margin-top: 236px;
+        margin-bottom: 96px;
+    }
+    .profile__button {
+        margin-top: 195px;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+    .profile__title {
+        font-size: 24px;
+        margin-top: 70px;
+        margin-bottom: 80px;
+    }
+
+    .profile__container {
+        column-gap: 1px;
+    }
+    .profile__button {
+        margin-top: 363px;
+    }
 }

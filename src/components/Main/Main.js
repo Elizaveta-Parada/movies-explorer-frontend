@@ -9,16 +9,18 @@ import Footer from "../Footer/Footer"
 
 function Main() {
   return (
-    <section className="main">
+    <>
       <Header />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <section className="main">
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </section>
       <Footer />
-    </section>
+    </>
   );
 }
 
