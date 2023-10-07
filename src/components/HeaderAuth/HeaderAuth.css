@@ -1,0 +1,9 @@
+.header__auth {
+    max-width: 1280px;
+    background: #FFFFFF;
+    width: calc(320px + (1140 - 320)*((100vw - 320px)/(1280 - 320)));
+    min-height: 74px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}

@@ -4,17 +4,21 @@ import Portfolio from "../Portfolio/Portfolio";
 import NavTab from "../NavTab/NavTab";
 import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
 function Main() {
   return (
-    <div className="Main">
+    <section className="main">
+      <Header />
       <Promo />
       <NavTab />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
-    </div>
+      <Footer />
+    </section>
   );
 }
 

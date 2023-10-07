@@ -17,6 +17,7 @@
     margin-left: calc(14px + (70 - 14)*((100vw - 320px)/(1280 - 320)));
 }
 .header__container {
+    width: 183px;
     display: flex;
     gap: 30px;
     justify-content: space-between;
@@ -37,8 +38,9 @@
     border-radius: 3px;
     background: #2BE080;
     text-decoration: none;
-    width: calc(56px + (76 - 56)*((100vw - 320px)/(1280 - 320)));
-    height: calc(26px + (32 - 26)*((100vw - 320px)/(1280 - 320)));
+    width: calc(54px + (76 - 54)*((100vw - 320px)/(768 - 320)));
+    min-width: 54px;
+    height: calc(26px + (32 - 26)*((100vw - 320px)/(768 - 320)));
     border: none;
     display: flex;
     align-items: center;
@@ -48,4 +50,29 @@
     line-height: 16px;
     padding: 0;
     cursor: pointer;
+}
+
+.header__btn-link {
+    color: black;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .header__logo {
+        margin-left: 30px;
+    }
+    .header__container {
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header__logo {
+        margin-left: 14px;
+    }
+    .header__container {
+        margin-right: 14px;
+        width: 132px;
+        gap: 14px;
+    }
 }

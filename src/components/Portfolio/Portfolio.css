@@ -1,23 +1,24 @@
 .portfolio {
-    width: calc(292px + (1140 - 292)*((100vw - 320px)/(1280 - 320)));
+    width: 100%;
     margin: auto;
     margin-top: calc(70px + (101 - 70)*((100vw - 320px)/(1280 - 320)));
 }
 
 .portfolio__title {
+    width: 1140px;
     color: #A0A0A0;
-    font-size: calc(14px + (18 - 14)*((100vw - 320px)/(1280 - 320)));
+    font-size: 18px;
     font-weight: 400;
     line-height: 20px;
-    margin: 0;
+    margin: auto;
     margin-bottom: calc(40px + (50 - 40)*((100vw - 320px)/(1280 - 320)));
 }
 
 .portfolio__lists {
     list-style: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
-    width: 100%;
+    width: 1140px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -34,6 +35,7 @@
     border-bottom: none;
 
 }
+
 .portfolio__link {
     width: 100%;
     display: grid;
@@ -49,21 +51,80 @@
 .portfolio__subtitle {
     grid-area: title;
     margin: 0;
-    font-size: calc(17px + (30 - 17)*((100vw - 320px)/(1280 - 320)));
+    font-size: 30px;
     font-weight: 400;
-    line-height: calc(28px + (50 - 28)*((100vw - 320px)/(1280 - 320)));
-    letter-spacing: calc(-0.72px + (-1.2 + 0.72)*((100vw - 320px)/(1280 - 320)));
+    line-height: 50px;
+    letter-spacing: -1.2px;
 }
 
 .portfolio__image {
     grid-area: link;
     margin: 0;
     width: calc(18px + (29 - 18)*((100vw - 320px)/(1280 - 320)));
+    height: 15px;
+    background-image: url(../../images/point.svg);
+    background-repeat: no-repeat;
+    background-size: 29px 15px;
+}
+
+@media screen and (max-width: 780px) {
+    .portfolio {
+        margin-top: 91px;
+    }
+
+    .portfolio__title {
+        width: 668px;
+        margin-bottom: 50px;
+    }
+
+    .portfolio__subtitle {
+        font-size: 28px;
+        letter-spacing: -1.12px;
+    }
+
+    .portfolio__link {
+        gap: 130px;
+    }
+
+    .portfolio__lists {
+        width: 668px;
+    }
+
+    .portfolio__image {
+        background-size: 21px 15px;
+    }
 }
 
 @media screen and (max-width: 420px) {
     .portfolio__link {
         grid-template-columns: 84% 26%;
-        
+        gap: 31px;
+
     }
+
+    .portfolio__title {
+        width: 292px;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 40px;
+    }
+
+    .portfolio {
+        margin-top: 70px;
+    }
+
+    .portfolio__subtitle {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        line-height: 28px;
+    }
+
+    .portfolio__lists {
+        width: 292px;
+    }
+
+    .portfolio__image {
+        background-size: 10px 15px;
+    }
+
 }

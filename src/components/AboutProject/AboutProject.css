@@ -1,4 +1,5 @@
 .about-project {
+    width: 100%;
     min-height: 608px;
     display: flex;
     flex-direction: column;
@@ -8,36 +9,38 @@
 .about-project__title {
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
     border-bottom: 1px solid rgba(0, 0, 0, 1);
-    font-size: calc(18px + (22 - 18)*((100vw - 320px)/(1280 - 320)));
+    font-size: 22px;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: calc(-0.72px + (-0.88 + 0.72)*((100vw - 320px)/(1280 - 320)));
+    letter-spacing: -0.88px;
     margin: 0;
-    padding-bottom: calc(28px + (23 - 28)*((100vw - 320px)/(1280 - 320)));
+    padding-bottom: 23px;
     margin-top: calc(70px + (110 - 70)*((100vw - 320px)/(1280 - 320)));
 }
 
 .table {
     list-style-type: none;
     display: flex;
-    gap: 40px;
+    gap: 51px;
     margin: auto;
     padding: 0;
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
+    margin-top: 70px;
+    margin-bottom: 110px;
 }
 
 .table__cell {
     display: flex;
-    gap: calc(16px + (26 - 16)*((100vw - 320px)/(1280 - 320)));
+    gap: 26px;
     flex-direction: column;
 
 }
 
 .table__heading {
-    font-size: calc(18px + (20 - 18)*((100vw - 320px)/(1280 - 320)));
+    font-size: 20px;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: calc(-0.72px + (-0.8 + 0.72)*((100vw - 320px)/(1280 - 320)));
+    letter-spacing: -0.88px;
     margin: 0;
 }
 
@@ -61,7 +64,7 @@
     grid-template-areas:
         "header"
         "text";
-    row-gap: calc(10px + (14 - 10)*((100vw - 320px)/(1280 - 320)));
+    row-gap: 10px;
 }
 
 .grid__item-title {
@@ -97,12 +100,39 @@
     background-color: #F2F2F2;
  }
 
+ @media screen and (max-width: 780px) {
+    .about-project__title {
+        padding-left: 15px;
+    }
+
+    .table {
+        margin-bottom: 93px;
+        gap: 25px;
+        padding-left: 15px;
+    }
+
+    .table__cell {
+        gap: 22px;
+    } 
+    
+    .grid__item {
+        gap: 12px;
+    }
+
+    .grid__items {
+        width: 668px;
+        grid-template-columns: 21% 79%;
+    }
+
+ }
+
  @media screen and (max-width: 420px) {
     .table {
         flex-direction: column;
         gap: 56px;
         margin-top: 60px;
         margin-bottom: 60px;
+        padding-left: 0;
     }
 
     .grid__item-subtitle {
@@ -110,6 +140,27 @@
     }
 
     .grid__items {
+        width: 284px;
         grid-template-columns: 35% 65%;
+    }
+
+    .about-project__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-left: 0;
+        padding-bottom: 29px;
+    }
+
+    .table__heading {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .table__cell {
+        gap: 16px;
+    }
+
+    .grid__item {
+        gap: 10px;
     }
 }

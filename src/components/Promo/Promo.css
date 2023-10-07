@@ -1,6 +1,5 @@
 .promo {
     background-color: #465DFF;
-    align-items: center;
     display: flex;
     justify-content: center;
     position: relative;
@@ -12,21 +11,60 @@
 .promo__title {
     margin: 0;
     color: #FFF;
-    font-size: calc(31px + (50 - 31)*((100vw - 320px)/(1280 - 320)));
+    font-size: 50px;
     font-weight: 400;
-    line-height: calc(39px + (58 - 39)*((100vw - 320px)/(1280 - 320)));
-    letter-spacing: calc(-2px + (-1.24 + 2)*((100vw - 320px)/(1280 - 320)));
-    width: calc(300px + (730 - 300)*((100vw - 320px)/(1280 - 320)));
+    line-height: 58px;
+    letter-spacing: -2px;
+    width: 730px;
     display: flex;
     text-align: center;
+    padding-bottom: 37px;
 }
 
 .promo__logo {
-    width: calc(248px + (320 - 248)*((100vw - 320px)/(1280 - 320)));
-    height: calc(248px + (320 - 248)*((100vw - 320px)/(1280 - 320)));
+    width: 320px;
+    height: 320px;
     flex-shrink: 0;
     z-index: -2;
     position: absolute;
-    top: calc(142px + (82 - 142)*((100vw - 320px)/(1280 - 320)));
-    left: calc(36px + (480 - 36)*((100vw - 320px)/(1280 - 320)));
+    top: 82px;
+    left: 480px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .promo {
+        min-height: 784px;
+    }
+
+    .promo__logo {
+        top: 224px;
+        left: 224px;
+    }
+
+    .promo__title {
+        padding-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .promo {
+        min-height: 570px;
+    }
+
+    .promo__logo {
+        top: 142px;
+        left: 36px;
+        width: 248px;
+        height: 248px;
+    }
+
+    .promo__title {
+        padding-bottom: 35px;
+        font-size: 31px;
+        line-height: 39px;
+        letter-spacing: -1.24px;
+    }
+
 }
