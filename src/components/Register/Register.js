@@ -11,16 +11,16 @@ function Register() {
                 <h2 className="login__title">Добро пожаловать!</h2>
                 <form className="login__form">
                 <label className='login__form-text'>Имя</label>
-                    <input className="login__form-input" name="Имя" type="text" placeholder="Имя" value="Имя" 
+                    <input className="login__form-input" name="Имя" type="text" placeholder="Имя" value="Виталий" 
                     required minLength='2' maxLength='30'></input>
                     <label className='login__form-text'>E-mail</label>
                     <input className="login__form-input" name="email" type="email" placeholder="Email" 
-                    value="email" required autoComplete="username"></input>
+                    value="pochta@yandex.ru" required autoComplete="username"></input>
                     <label className='login__form-text'>Пароль</label>
                     <input className="login__form-input" name="password" type="password" placeholder="Пароль" 
                     value="password" required autoComplete="curren-password"></input>
                     <span className='login__massege'>Что-то пошло не так...</span>
-                    <button className="login__button" type="submit" >Зарегистрироваться</button>
+                    <button className="login__btn" type="submit" >Зарегистрироваться</button>
                     <p className='login__text'>
                     Уже зарегистрированы?
                         <Link className='login__link' to='/signin'>Войти</Link>
