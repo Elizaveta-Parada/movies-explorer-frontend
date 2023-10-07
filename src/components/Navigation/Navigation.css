@@ -1,10 +1,8 @@
 .navigation {
     display: flex;
-    /* gap: calc(150px + (364 - 150)*((100vw - 800px)/(1280 - 800))); */
-    margin-right: calc(28px + (70 - 28)*((100vw - 800px)/(1280 - 800)));
     align-items: center;
     justify-content: space-between;
-    width: 676px;
+    width: 95%
 }
 
 .navigation__lists {
@@ -124,5 +122,11 @@
     .nav__shadow_active {
         display: block;
         right: 0px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .navigation__btn-mobile {
+        right: 14px;
     }
 }

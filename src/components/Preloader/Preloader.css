@@ -17,3 +17,18 @@
     font-weight: 500;
     line-height: normal;
 }
+
+@media screen and (max-width: 780px) {
+    .preloader__container {
+        margin-bottom: 85px;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+    .preloader__container {
+        margin-top: 53px;
+        margin-bottom: 79px;
+    }
+    
+}
