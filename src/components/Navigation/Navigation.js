@@ -32,7 +32,7 @@ function Navigation() {
             <div className='navigation__btn-mobile' onClick={() => setNav(!nav)}>
                 {nav ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={40} />}
             </div>
-            <div className={nav ? ["nav__shadow nav__shadow_active"].join(" ") : ["nav__shadow"]}></div>
+            <div className={nav ? ["navigation__shadow navigation__shadow_active"].join(" ") : ["navigation__shadow"]}></div>
         </>
     )
 }

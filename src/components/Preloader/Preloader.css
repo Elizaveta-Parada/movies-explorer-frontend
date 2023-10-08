@@ -8,6 +8,11 @@
     align-items: center;
     justify-content: center;
     margin: 50px auto 80px auto;
+    cursor: pointer;
+}
+
+.preloader__container:hover {
+    opacity: 0.8;
 }
 
 .preloader__round {

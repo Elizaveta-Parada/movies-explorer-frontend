@@ -53,6 +53,12 @@
 
 .footer__link {
     margin: 0;
+    text-decoration: none;
+    color: black;
+}
+
+.footer__link:hover {
+    opacity: 0.7;
 }
 
 @media screen and (max-width: 780px) {

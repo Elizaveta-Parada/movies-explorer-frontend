@@ -6,10 +6,9 @@ function HeaderAuth() {
     return (
         <header className="header__auth">
             <img className="header__auth-logo" src={Logo} alt="Логотип" />
-            <div className="header__auth-contant">
+            <div className="header__auth-content">
                 <Navigation />
             </div>
-
         </header>
     );
 }

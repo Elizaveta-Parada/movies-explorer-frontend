@@ -13,7 +13,8 @@ function Login() {
                     <input className="login__form-input" name="email" type="email" placeholder="Email" value="pochta@yandex.ru" required autoComplete="username"></input>
                     <label className='login__form-text'>Пароль</label>
                     <input className="login__form-input" name="password" type="password" placeholder="Пароль" value="password" required autoComplete="curren-password"></input>
-                    <button className="login__button" type="submit" >Войти</button>
+                    <button className="login__button" type="submit" >
+                        <Link className='login__button-link' to='/movies'>Войти</Link></button>
                     <p className='login__text'>
                         Ещё не зарегистрированы?
                         <Link className='login__link' to='/signup'>Регистрация</Link>

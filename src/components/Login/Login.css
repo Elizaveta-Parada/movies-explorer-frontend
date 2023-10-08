@@ -61,6 +61,7 @@
     margin-top: 154px;
     margin-bottom: 16px;
     padding: 0;
+    cursor: pointer;
 }
 
 .login__btn{
@@ -75,6 +76,7 @@
     line-height: normal;
     border-style: none;
     margin-bottom: 16px;
+    cursor: pointer;
 }
 
 .login__text {
@@ -94,6 +96,11 @@
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
+    text-decoration: none;
+}
+
+.login__button-link {
+    color: #FFF;
     text-decoration: none;
 }
 

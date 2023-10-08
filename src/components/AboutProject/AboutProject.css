@@ -1,4 +1,4 @@
-.about-project {
+.about {
     max-width: 1280px;
     min-height: 608px;
     display: flex;
@@ -7,7 +7,7 @@
     margin: auto;
 }
 
-.about-project__title {
+.about__title {
     max-width: 1140px;
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
     border-bottom: 1px solid rgba(0, 0, 0, 1);
@@ -20,7 +20,7 @@
     margin-top: calc(70px + (110 - 70)*((100vw - 320px)/(1280 - 320)));
 }
 
-.table {
+.about__table {
     list-style-type: none;
     display: flex;
     gap: 51px;
@@ -32,14 +32,14 @@
     max-width: 1140px;
 }
 
-.table__cell {
+.about__table-cell {
     display: flex;
     gap: 26px;
     flex-direction: column;
 
 }
 
-.table__heading {
+.about__table-heading {
     font-size: 20px;
     font-weight: 400;
     line-height: normal;
@@ -47,14 +47,14 @@
     margin: 0;
 }
 
-.table__text {
+.about__table-text {
     font-size: calc(11px + (14 - 11)*((100vw - 320px)/(1280 - 320)));
     font-weight: 400;
     line-height: calc(16px + (20 - 16)*((100vw - 320px)/(1280 - 320)));
     margin: 0;
 }
 
-.grid__items {
+.about__items {
     width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
     display: grid;
     grid-template-columns: 20% 80%;
@@ -62,7 +62,7 @@
     max-width: 1140px;
 }
 
-.grid__item {
+.about__item {
     display: grid;
     grid-template-rows: 53% 47%;
     grid-template-areas:
@@ -71,7 +71,7 @@
     row-gap: 10px;
 }
 
-.grid__item-title {
+.about__item-title {
     grid-area: header;
     margin: 0;
     text-align: center;
@@ -84,7 +84,7 @@
     align-items: center;
 }
 
-.grid__item-subtitle {
+.about__item-subtitle {
     grid-area: text;
     margin: 0;
     color: #A0A0A0;
@@ -105,25 +105,25 @@
  }
 
  @media screen and (max-width: 780px) {
-    .about-project__title {
+    .about__title {
         padding-left: 15px;
     }
 
-    .table {
+    .about__table {
         margin-bottom: 93px;
         gap: 25px;
         padding-left: 15px;
     }
 
-    .table__cell {
+    .about__table-cell {
         gap: 22px;
     } 
     
-    .grid__item {
+    .about__item {
         gap: 12px;
     }
 
-    .grid__items {
+    .about__items {
         width: 668px;
         grid-template-columns: 21% 79%;
     }
@@ -131,7 +131,7 @@
  }
 
  @media screen and (max-width: 420px) {
-    .table {
+    .about__table {
         flex-direction: column;
         gap: 56px;
         margin-top: 60px;
@@ -139,32 +139,32 @@
         padding-left: 0;
     }
 
-    .grid__item-subtitle {
+    .about__item-subtitle {
         line-height: normal;
     }
 
-    .grid__items {
+    .about__items {
         width: 284px;
         grid-template-columns: 35% 65%;
     }
 
-    .about-project__title {
+    .about__title {
         font-size: 18px;
         letter-spacing: -0.72px;
         padding-left: 0;
         padding-bottom: 29px;
     }
 
-    .table__heading {
+    .about__table-heading {
         font-size: 18px;
         letter-spacing: -0.72px;
     }
 
-    .table__cell {
+    .about__table-cell {
         gap: 16px;
     }
 
-    .grid__item {
+    .about__item {
         gap: 10px;
     }
 }
