@@ -27,7 +27,7 @@
     .preloader__container {
         margin-bottom: 85px;
     }
-    
+
 }
 
 @media screen and (max-width: 400px) {
@@ -35,5 +35,5 @@
         margin-top: 53px;
         margin-bottom: 79px;
     }
-    
+
 }

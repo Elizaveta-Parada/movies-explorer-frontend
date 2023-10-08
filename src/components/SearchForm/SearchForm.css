@@ -87,11 +87,11 @@
 }
 
 @media screen and (max-width: 780px) {
-    .search__form {
-      margin-top: 86px;
-      width: 708px;
-      padding-bottom: 50px;
-    }
+  .search__form {
+    margin-top: 86px;
+    width: 708px;
+    padding-bottom: 50px;
+  }
 }
 
 @media screen and (max-width: 400px) {

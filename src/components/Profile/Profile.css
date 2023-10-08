@@ -70,7 +70,8 @@
 }
 
 .profile__massege {
-    border-top: 1px solid #E8E8E8;;
+    border-top: 1px solid #E8E8E8;
+    ;
 }
 
 @media screen and (max-width: 800px) {
@@ -78,10 +79,11 @@
         margin-top: 236px;
         margin-bottom: 96px;
     }
+
     .profile__button {
         margin-top: 195px;
     }
-    
+
 }
 
 @media screen and (max-width: 400px) {
@@ -94,6 +96,7 @@
     .profile__container {
         column-gap: 1px;
     }
+
     .profile__button {
         margin-top: 363px;
     }
