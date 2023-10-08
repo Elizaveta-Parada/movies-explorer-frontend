@@ -19,4 +19,5 @@ Frontend приложение со следующими возможностям
 * API (POST, GET, PUT, DELETE)
 * React
 
-Адрес репозитория: https://github.com/Elizaveta-Parada/movies-explorer-frontend/compare/level-2?expand=1
+Адрес репозитория: https://github.com/Elizaveta-Parada/movies-explorer-frontend/pull/2
+
