@@ -21,3 +21,4 @@ Frontend приложение со следующими возможностям
 
 Адрес репозитория: https://github.com/Elizaveta-Parada/movies-explorer-frontend/pull/2
 
+Макет: light-2

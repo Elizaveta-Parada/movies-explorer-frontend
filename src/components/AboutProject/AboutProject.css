@@ -1,15 +1,14 @@
 .about {
-    max-width: 1280px;
-    min-height: 608px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .about__title {
     max-width: 1140px;
-    width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
+    width: calc(668px + (1140 - 668)*((100vw - 780px)/(1280 - 768)));
     border-bottom: 1px solid rgba(0, 0, 0, 1);
     font-size: 22px;
     font-weight: 400;
@@ -26,7 +25,7 @@
     gap: 51px;
     margin: 0 auto;
     padding: 0;
-    width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
+    width: calc(668px + (1140 - 668)*((100vw - 780px)/(1280 - 768)));
     margin-top: 70px;
     margin-bottom: 110px;
     max-width: 1140px;
@@ -55,10 +54,11 @@
 }
 
 .about__items {
-    width: calc(284px + (1140 - 284)*((100vw - 320px)/(1280 - 320)));
+    width: calc(668px + (1140 - 668)*((100vw - 780px)/(1280 - 768)));
     display: grid;
     grid-template-columns: 20% 80%;
-    margin-bottom: calc(69px + (100 - 69)*((100vw - 320px)/(1280 - 320)));
+    margin: 0 auto;
+    margin-bottom: calc(69px + (115 - 69)*((100vw - 320px)/(1280 - 320)));
     max-width: 1140px;
 }
 
@@ -73,15 +73,16 @@
 
 .about__item-title {
     grid-area: header;
-    margin: 0;
     text-align: center;
-    font-size: calc(11px + (14 - 11)*((100vw - 320px)/(1280 - 320)));
+    font-size: 14px;
     font-weight: 400;
     line-height: normal;
     min-height: calc(35px + (36 - 35)*((100vw - 320px)/(1280 - 320)));
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #2BE080;
+    margin: 0;
 }
 
 .about__item-subtitle {
@@ -89,30 +90,27 @@
     margin: 0;
     color: #A0A0A0;
     text-align: center;
-    font-size: calc(11px + (14 - 11)*((100vw - 320px)/(1280 - 320)));
+    font-size: 14;
     font-weight: 500;
     line-height: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
- #left {
-    background-color: #2BE080;
- }
-
- #rigth {
+ 
+ .about__item-title_theme_grey {
     background-color: #F2F2F2;
  }
 
  @media screen and (max-width: 780px) {
     .about__title {
-        padding-left: 15px;
+        width: (284px + (668 - 284)*((100vw - 320px)/(768 - 320)));
     }
 
     .about__table {
+        width: (284px + (668 - 284)*((100vw - 320px)/(768 - 320)));
         margin-bottom: 93px;
-        gap: 25px;
-        padding-left: 15px;
+        gap: 27px;
     }
 
     .about__table-cell {
@@ -124,8 +122,9 @@
     }
 
     .about__items {
-        width: 668px;
+        width: calc(284px + (668 - 284)*((100vw - 320px)/(768 - 320)));
         grid-template-columns: 21% 79%;
+        margin-bottom: 94px;
     }
 
  }
@@ -144,7 +143,6 @@
     }
 
     .about__items {
-        width: 284px;
         grid-template-columns: 35% 65%;
     }
 
