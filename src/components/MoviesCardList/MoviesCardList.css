@@ -17,7 +17,7 @@
     margin-bottom: 30px;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .movies__list {
         grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
         grid-gap: 36px 30px;

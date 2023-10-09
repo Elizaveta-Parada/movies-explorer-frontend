@@ -18,7 +18,7 @@
     height: 38px;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .header__auth-logo {
         margin-left: 30px;
     }

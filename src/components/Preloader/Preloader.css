@@ -23,7 +23,7 @@
     line-height: normal;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .preloader__container {
         margin-bottom: 85px;
     }

@@ -3,7 +3,6 @@
     background-color: #465DFF;
     display: flex;
     justify-content: center;
-    min-height: 524px;
 }
 
 .promo__title {
@@ -17,7 +16,8 @@
     align-items: center;
     text-align: center;
     position: relative;
-    padding-bottom: 37px;
+    padding-bottom: 121px;
+    padding-top: 82px;
 }
 
 .promo__title::before {
@@ -34,13 +34,11 @@
     height: calc(248px + (320 - 248)*((100vw - 320px)/(1280 - 320)));
 }
 
-@media screen and (max-width: 780px) {
-    .promo {
-        min-height: 784px;
-    }
-
+@media screen and (max-width: 800px) {
+   
     .promo__title {
-        padding-bottom: 20px;
+        padding-bottom: 240px;
+        padding-top: 224px;
     }
 
     .promo__title::before {
@@ -51,15 +49,18 @@
 }
 
 @media screen and (max-width: 400px) {
-    .promo {
-        min-height: 570px;
-    }
-
+    
     .promo__title {
         padding-bottom: 35px;
         font-size: 31px;
         line-height: 39px;
         letter-spacing: -1.24px;
+        padding-top: 110px;
+        padding-bottom: 140px;
+    }
+
+    .promo__title::before {
+        max-width: 300px;
     }
 
 }

@@ -61,14 +61,14 @@
     opacity: 0.7;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .footer__title {
         width: calc(300px + (708 - 300)*((100vw - 320px)/(768 - 320)));
         padding-top: 80px;
     }
 
     .footer__container {
-        width: calc(300px + (708 - 300)*((100vw - 320px)/(768 - 320)));
+        max-width: 708px;
         padding-top: 20px;
     }
 }
@@ -92,7 +92,7 @@
     .footer__title {
         padding-top: 80px;
         font-size: 12px;
-        padding-bottom: 21px;
+        padding-bottom: 20px;
     }
 
     .footer__container {

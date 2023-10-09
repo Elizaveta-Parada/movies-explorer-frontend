@@ -86,7 +86,7 @@
   font-weight: 400;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
   .search__form {
     margin-top: 86px;
     width: 708px;

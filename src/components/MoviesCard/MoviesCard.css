@@ -69,7 +69,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .card__image {
         width: 339px;
         height: 190px;
