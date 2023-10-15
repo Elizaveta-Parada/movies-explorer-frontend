@@ -1,19 +1,28 @@
-import card1 from '../../images/card1.jpg'
-// import card2 from '../../images/card2.jpg'
-// import card3 from '../../images/card3.jpg'
-// import card4 from '../../images/card4.jpg'
+import { useLocation } from 'react-router-dom';
+import image from '../../images/card1.jpg'
+import './MoviesCard.css';
 
-import './MoviesCard.css'
 
 
 function MoviesCard() {
+    const pathname = useLocation().pathname
+
+    function handleSave() {
+        const saveButton = document.querySelector(".card__save");
+        if (saveButton) {
+            saveButton.classList.toggle('card__save-active');
+        }
+    }
     return (
         <article className="card">
-            <img className="card__image" src={card1} alt="#" />
+            <img className="card__image" src={image} alt="33 слова о дизайне" />
             <div className="card__group">
                 <div className="card__container">
                     <h2 className="card__title">33 слова о дизайне</h2>
-                    <button type="button" className='card__btn' />
+                    {pathname ==='/saved-movies' ? 
+                    <button type="button" className="card__delete" aria-label="Удалить" />  :
+                    <button type="button" className='card__save' onClick={handleSave}/>
+                    }
                 </div>
                 <p className="card__time">1ч42м</p>
             </div>
@@ -21,4 +30,9 @@ function MoviesCard() {
     )
 }
 
-export default MoviesCard
+export default MoviesCard;
+
+
+
+
+

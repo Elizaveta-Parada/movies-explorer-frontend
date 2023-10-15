@@ -23,6 +23,10 @@
     padding-left: 5px;
 }
 
+.navtab__link:hover {
+    opacity: 0.7;
+}
+
 @media screen and (max-width: 800px) {
     .navtab__links {
         gap: 40px;
