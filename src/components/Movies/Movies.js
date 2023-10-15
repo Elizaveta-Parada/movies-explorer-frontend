@@ -6,14 +6,15 @@ import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css'
 
 function Movies() {
+
     return (
         <>
             <HeaderAuth />
-            <SearchForm />
-            <section className="movies">
-                <MoviesCardList />
-            </section>
-            <Preloader />
+            <main>
+                <SearchForm />
+                <MoviesCardList/>
+                <Preloader />
+            </main>
             <Footer />
         </>
     );

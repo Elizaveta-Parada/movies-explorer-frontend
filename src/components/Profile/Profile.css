@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: calc(100vh -74px);
 }
 
 .profile__title {
@@ -57,6 +58,11 @@
     line-height: normal;
     border-style: none;
     background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.profile__button:hover {
+    opacity: 0.8;
 }
 
 .profile__link {
@@ -69,9 +75,33 @@
     margin-bottom: 70px;
 }
 
+.profile__link:hover {
+    opacity: 0.7;
+}
+
 .profile__massege {
     border-top: 1px solid #E8E8E8;
     ;
+}
+
+.profile__button-edt {
+    border-radius: 3px;
+    background: #3456F3;
+    width: 410px;
+    height: 45px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 223px;
+    cursor: pointer;
+}
+
+.profile__button-edt:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 800px) {

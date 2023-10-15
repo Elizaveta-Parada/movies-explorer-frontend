@@ -1,35 +1,54 @@
-.navigation {
+.header__navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    gap: 16px;
 }
 
-.navigation__lists {
+.header__navigation-lists {
     display: flex;
     column-gap: 16px;
-    padding: 0;
     margin: 0;
+    padding-left: 70px;
 }
 
-.navigation__list {
+.header__navigation-list {
     list-style: none;
-
-}
-
-.navigation__link {
-    text-decoration: none;
-    color: #000000;
     font-size: 13px;
+    font-style: normal;
     font-weight: 400;
     line-height: 18px;
+
 }
 
-.navigation__link:active {
-    text-decoration: underline;
+.header__navigation-link {
+    text-decoration: none;
+    color: black;
 }
 
-.navigation__btn {
+.header__navigation-link:hover {
+    opacity: 0.7;
+}
+
+.header__navigation-link_active {
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+
+.header__navigation-btn_mobile {
+    display: none;
+}
+
+.header__navigation-btn_mobile:hover {
+    opacity: 0.8;
+}
+
+.header__navigation-list_mobile {
+    display: none;
+}
+
+.header__navigation-auth_btn {
     color: #000000;
     border-radius: 20px;
     background: #F9F9F9;
@@ -41,44 +60,48 @@
     line-height: 16px;
     border: none;
     padding: 0;
-}
-
-.navigation__btn-mobile {
+    cursor: pointer;
     display: none;
 }
 
-.navigation__list-mobile {
-    display: none;
+.header__navigation-auth_btn {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 800px) {
-    .navigation__btn-mobile {
+    .header__navigation-btn_mobile {
         display: block;
         position: absolute;
-        top: 27px;
+        top: 23px;
         right: 30px;
         z-index: 10;
         cursor: pointer;
     }
 
-    .navigation__lists {
+    .header__navigation-lists {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 32px;
+        padding: 0;
         padding-top: 159px;
+        
     }
 
-    .navigation__link {
+    .header__navigation-link {
         font-size: 18px;
     }
+    .header__navigation-link_active {
+        font-size: 18px;
+        text-decoration: underline;
+    }
 
-    .navigation__list-mobile {
+    .header__navigation-list_mobile {
         display: block;
     }
 
-    .navigation {
+    .header__navigation {
         flex-direction: column;
         width: calc(320px + (520 - 320)*((100vw - 320px)/(768 - 320)));
         height: 100vh;
@@ -92,16 +115,17 @@
         z-index: 3;
     }
 
-    .navigation_active {
+    .header__navigation-active {
         right: 0px;
         margin: 0;
+        max-width: 520px;
     }
 
-    .navigation__btn {
+    .header__navigation-btn {
         margin-bottom: calc(46px + (90 - 46)*((100vw - 320px)/(768 - 320)));
     }
 
-    .navigation__shadow {
+    .header__navigation-shadow {
         display: none;
         position: fixed;
         right: -100%;
@@ -114,23 +138,38 @@
         z-index: 2;
     }
 
-    .navigation__shadow_active {
+    .header__navigation-shadow_active {
         display: block;
         right: 0px;
     }
+
+    .header__navigation-auth_btn {
+        display: block;
+        margin-bottom: 90px;
+    }
 }
 
+
+
 @media screen and (max-width: 400px) {
-    .navigation__btn-mobile {
+    .header__navigation-btn_mobile {
         right: 14px;
     }
 
-    .navigation__lists {
+    .header__navigation-lists {
+        gap: 27px;
+        padding: 0;
         padding-top: 144px;
-        gap: 30px;
     }
 
-    .navigation__link:active {
-        text-decoration: underline;
+    .header__navigation-auth_btn {
+        display: block;
+        margin-bottom: 46px;
+    }
+
+    .header__navigation {
+        min-height: 780px;
+        justify-content: space-between;
     }
 }
+

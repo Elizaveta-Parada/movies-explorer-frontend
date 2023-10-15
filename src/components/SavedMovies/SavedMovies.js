@@ -11,7 +11,6 @@ function SavedMovies() {
             <HeaderAuth />
             <SearchForm />
             <section className="saved__movies">
-                <section className="movies__card-list">
                     <ul className="movies__list">
                         <li>
                             <MoviesCard />
@@ -26,7 +25,6 @@ function SavedMovies() {
                             <MoviesCard />
                         </li>
                     </ul>
-                </section>
             </section>
             <Footer />
         </>

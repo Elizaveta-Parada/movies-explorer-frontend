@@ -5,13 +5,16 @@ import './HeaderAuth.css'
 
 function HeaderAuth() {
     return (
-        <header className="header__auth">
+        <header className="header-auth">
             <Link to="/">
-                <img className="header__auth header__auth-logo" src={Logo} alt="Логотип" />
+                <img className="header-auth__logo" src={Logo} alt="Логотип" />
             </Link>
-            <div className="header__auth header__auth-content">
+            <div>
                 <Navigation />
             </div>
+            <button className="header-auth__btn" type='button'>
+                    <Link className="header-auth__link" to="/profile">Аккаунт</Link>
+            </button>
         </header>
     );
 }

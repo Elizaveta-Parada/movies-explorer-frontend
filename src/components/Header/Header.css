@@ -20,6 +20,10 @@
     max-height: 38px;
 }
 
+.header__logo:hover {
+    opacity: 0.7;
+}
+
 .header__container {
     display: flex;
     gap: 30px;
@@ -34,6 +38,10 @@
     font-weight: 500;
     line-height: 16px;
     text-decoration: none;
+}
+
+.header__link:hover {
+    opacity: 0.7;
 }
 
 .header__btn {
@@ -54,6 +62,10 @@
     line-height: 16px;
     padding: 0;
     cursor: pointer;
+}
+
+.header__btn:hover {
+    opacity: 0.8;
 }
 
 .header__btn-link {
