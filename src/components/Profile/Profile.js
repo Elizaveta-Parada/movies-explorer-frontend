@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import HeaderAuth from '../HeaderAuth/HeaderAuth'
 import './Profile.css'
 import { useState } from 'react';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
 
 function Profile() {
     const [name, setName] = useState("")
@@ -21,7 +21,7 @@ function Profile() {
     }
     return (
         <>
-            <HeaderAuth />
+            <HeaderMenu />
             <main className='profile'>
                 <h2 className='profile__title'>Привет, Виталий!</h2>
                 <form className="profile__form" noValidate>

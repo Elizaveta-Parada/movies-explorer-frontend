@@ -1,5 +1,5 @@
 import Footer from "../Footer/Footer";
-import HeaderAuth from "../HeaderAuth/HeaderAuth";
+import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchForm from "../SearchForm/SearchForm";
 import './SavedMovies.css'
@@ -8,9 +8,10 @@ import './SavedMovies.css'
 function SavedMovies() {
     return (
         <>
-            <HeaderAuth />
+            <HeaderMenu />
+            <main>
             <SearchForm />
-            <section className="saved__movies">
+                <section className="movies">
                     <ul className="movies__list">
                         <li>
                             <MoviesCard />
@@ -25,7 +26,8 @@ function SavedMovies() {
                             <MoviesCard />
                         </li>
                     </ul>
-            </section>
+                </section>
+            </main>
             <Footer />
         </>
     );

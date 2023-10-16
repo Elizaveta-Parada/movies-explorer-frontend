@@ -1,5 +1,5 @@
 import Footer from '../Footer/Footer';
-import HeaderAuth from '../HeaderAuth/HeaderAuth';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
@@ -9,10 +9,10 @@ function Movies() {
 
     return (
         <>
-            <HeaderAuth />
+            <HeaderMenu />
             <main>
                 <SearchForm />
-                <MoviesCardList/>
+                <MoviesCardList />
                 <Preloader />
             </main>
             <Footer />

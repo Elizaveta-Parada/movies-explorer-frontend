@@ -10,32 +10,32 @@ function Navigation() {
 
     return (
         <>
-            <nav className={nav ? ["header__navigation header__navigation-active"].join(" ") : ["header__navigation"]}>
-                <ul className="header__navigation-lists">
-                    <li className="header__navigation-list_mobile">
-                        <Link className={pathname === '/' ? "header__navigation-link_active" : "header__navigation-link" } to="/">
+            <nav className={nav ? ["menu__nav menu__nav_active"].join(" ") : ["menu__nav"]}>
+                <ul className="menu__lists">
+                    <li className="menu__mobile">
+                        <Link className={pathname === '/' ? "menu__link-active" : "menu__link" } to="/">
                             Главная
                         </Link>
                     </li>
-                    <li className="header__navigation-list">
-                        <Link className={pathname === '/movies' ? "header__navigation-link_active" : "header__navigation-link" } to="/movies">
+                    <li className="menu__list">
+                        <Link className={pathname === '/movies' ? "menu__link-active" : "menu__link" } to="/movies">
                             Фильмы
                         </Link>
                     </li>
-                    <li className="header__navigation-list">
-                        <Link className={pathname === '/saved-movies' ? "header__navigation-link_active" : "header__navigation-link" } to="/saved-movies" >
+                    <li className="menu__list">
+                        <Link className={pathname === '/saved-movies' ? "menu__link-active" : "menu__link" } to="/saved-movies" >
                             Сохранённые фильмы
                         </Link>
                     </li>
                 </ul>
-                <button className="header__navigation-auth_btn" type='button'>
-                    <Link className="header__navigation-link" to="/profile">Аккаунт</Link>
+                <button className="menu__button" type='button'>
+                    <Link className="menu__link" to="/profile">Аккаунт</Link>
                 </button>
             </nav>
-            <div className='header__navigation-btn_mobile' onClick={() => setNav(!nav)}>
+            <div className='menu__btn-mobile' onClick={() => setNav(!nav)}>
                 {nav ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={35} />}
             </div>
-            <div className={nav ? ["header__navigation-shadow header__navigation-shadow_active"].join(" ") : ["header__navigation-shadow"]}></div>
+            <div className={nav ? ["menu-shadow menu-shadow_active"].join(" ") : ["menu-shadow"]}></div>
         </>
     )
 }
