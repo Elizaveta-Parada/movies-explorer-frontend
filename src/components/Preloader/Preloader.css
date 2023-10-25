@@ -1,5 +1,9 @@
 .preloader {
     width: 100%;
+    /* min-height: 140px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .preloader__container {
@@ -11,8 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 50px auto 80px auto;
     cursor: pointer;
+    margin: 50px auto 80px auto;
 }
 
 .preloader__container:hover {
@@ -25,6 +29,7 @@
     font-size: 12px;
     font-weight: 500;
     line-height: normal;
+    padding-left: 15px;
 }
 
 @media screen and (max-width: 800px) {
@@ -33,9 +38,9 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 560px) {
     .preloader__container {
-        margin-top: 53px;
+        margin-top: 50px;
         margin-bottom: 79px;
     }
 

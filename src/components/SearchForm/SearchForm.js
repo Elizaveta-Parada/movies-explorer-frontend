@@ -1,6 +1,14 @@
 import './SearchForm.css'
 
 function SearchForm() {
+
+    function onCheck() {
+        const checkbox = document.querySelector(".search__checkbox-custom");
+        if (checkbox) {
+            checkbox.classList.toggle('search__checkbox-custom_active');
+        }
+    }
+    
     return (
         <section className="search">
             <form className="search__form" method="post" name="search" noValidate>
@@ -12,8 +20,8 @@ function SearchForm() {
                 </div>
                 <div className="search__container-checkbox">
                 <input type="checkbox" className="search__checkbox" name="short" id="short"/>
-                    <label htmlFor="short" className="search__checkbox-custom" />
-                    <p htmlFor="short" className="search__short-films">Короткометражки</p>
+                    <label className="search__checkbox-custom" onClick={onCheck} />
+                    <p className="search__short-films">Короткометражки</p>
                 </div>
             </form>
         </section>

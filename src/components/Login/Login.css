@@ -1,30 +1,24 @@
-.login__container {
+.login {
+    display: flex;
+    flex-direction: column;
     width: calc(260px + (396 - 260)*((100vw - 320px)/(768 - 320)));
     max-width: 396px;
     margin: auto;
-}
-
-.login__logo {
-    width: 38px;
-    height: 38px;
-    margin-top: 70px;
-}
-
-.login__logo:hover {
-    opacity: 0.7;
-}
-
-.login__title {
-    margin: 37px 0 40px 0;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: normal;
 }
 
 .login__form {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.login__form-fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .login__form-text {
@@ -66,6 +60,9 @@
     margin-bottom: 16px;
     padding: 0;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login__button:hover {
@@ -99,18 +96,6 @@
     gap: 9px;
 }
 
-.login__link {
-    color: #FF6838;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
-    text-decoration: none;
-}
-
-.login__link:hover {
-    opacity: 0.7;
-}
-
 .login__button-link {
     color: #FFF;
     text-decoration: none;
@@ -124,16 +109,24 @@
 }
 
 @media screen and (max-width: 800px) {
-    .login__logo {
-        margin-top: 232px;
+    .login {
+        padding-left: 15px;
+    }
+
+    .login__button {
+        margin-bottom: 18px;
     }
 
 }
 
 @media screen and (max-width: 400px) {
+    .login {
+        align-items: center;
+        padding-left: 0;
+    }
+
     .login__logo {
-        margin-top: 56px;
-        text-align: center;
+        margin-top: 55px;
     }
 
     .login__container {
@@ -143,23 +136,25 @@
     }
 
     .login__title {
-        margin-top: 50px;
-        margin-bottom: 80px;
-    }
-
-    .login__text {
-        font-size: 12px;
-    }
-
-    .login__link {
-        font-size: 12px;
+        margin-top: 45px;
+        margin-bottom: 75px;
     }
 
     .login__button {
-        margin-top: 243px;
+        margin-top: 250px;
+        margin-bottom: 15px;
     }
 
     .login__btn {
-        margin-top: 160px;
+        margin-top: 155px;
+        font-size: 12px;
+    }
+
+    .login__form-input {
+        margin-bottom: 14px;
+    }
+
+    .login__form-input:nth-of-type(3) {
+        margin-bottom: 20px;
     }
 }

@@ -1,6 +1,10 @@
 @import url("./vendor/normalize.css");
 @import url("./vendor/fonts/fonts.css");
 
+html, body {
+  height: 100%;
+}
+
 .page {
   max-width: 1280px;
   height: 100vh;

@@ -5,17 +5,15 @@ import './HeaderMenu.css'
 
 function HeaderMenu() {
     return (
-        <header className="menu">
+        <div className="menu">
             <Link to="/">
                 <img className="menu__logo" src={Logo} alt="Логотип" />
             </Link>
             <div>
                 <Navigation />
             </div>
-            <button className="menu__btn" type='button'>
-                <Link className="menu__link" to="/profile">Аккаунт</Link>
-            </button>
-        </header>
+                <Link className="menu__btn" to="/profile">Аккаунт</Link>
+        </div>
     );
 }
 

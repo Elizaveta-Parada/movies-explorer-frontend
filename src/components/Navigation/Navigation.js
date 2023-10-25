@@ -13,24 +13,22 @@ function Navigation() {
             <nav className={nav ? ["menu__nav menu__nav_active"].join(" ") : ["menu__nav"]}>
                 <ul className="menu__lists">
                     <li className="menu__mobile">
-                        <Link className={pathname === '/' ? "menu__link-active" : "menu__link" } to="/">
+                        <Link className={pathname === '/' ? "menu__link-active" : "menu__link"} to="/">
                             Главная
                         </Link>
                     </li>
                     <li className="menu__list">
-                        <Link className={pathname === '/movies' ? "menu__link-active" : "menu__link" } to="/movies">
+                        <Link className={pathname === '/movies' ? "menu__link-active" : "menu__link"} to="/movies">
                             Фильмы
                         </Link>
                     </li>
                     <li className="menu__list">
-                        <Link className={pathname === '/saved-movies' ? "menu__link-active" : "menu__link" } to="/saved-movies" >
+                        <Link className={pathname === '/saved-movies' ? "menu__link-active" : "menu__link"} to="/saved-movies" >
                             Сохранённые фильмы
                         </Link>
                     </li>
                 </ul>
-                <button className="menu__button" type='button'>
-                    <Link className="menu__link" to="/profile">Аккаунт</Link>
-                </button>
+                <Link className="menu__link menu__link_btn" to="/profile">Аккаунт</Link>
             </nav>
             <div className='menu__btn-mobile' onClick={() => setNav(!nav)}>
                 {nav ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={35} />}

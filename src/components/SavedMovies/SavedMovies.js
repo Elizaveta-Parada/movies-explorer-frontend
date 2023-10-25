@@ -1,5 +1,3 @@
-import Footer from "../Footer/Footer";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchForm from "../SearchForm/SearchForm";
 import './SavedMovies.css'
@@ -7,29 +5,26 @@ import './SavedMovies.css'
 
 function SavedMovies() {
     return (
-        <>
-            <HeaderMenu />
-            <main>
+        <main>
             <SearchForm />
-                <section className="movies">
-                    <ul className="movies__list">
-                        <li>
-                            <MoviesCard />
-                        </li>
-                        <li>
-                            <MoviesCard />
-                        </li>
-                        <li>
-                            <MoviesCard />
-                        </li>
-                        <li>
-                            <MoviesCard />
-                        </li>
-                    </ul>
-                </section>
-            </main>
-            <Footer />
-        </>
+            <section className="movies">
+                <ul className="movies__list">
+                    <li>
+                        <MoviesCard />
+                    </li>
+                    <li>
+                        <MoviesCard />
+                    </li>
+                    <li>
+                        <MoviesCard />
+                    </li>
+                    <li>
+                        <MoviesCard />
+                    </li>
+                </ul>
+            </section>
+            <div className="movies-gap"></div>
+        </main>
     );
 }
 

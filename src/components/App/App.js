@@ -7,13 +7,16 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Error from '../Error/Error';
 import Profile from '../Profile/Profile';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 
 
 function App() {
   
   return (
-    <div>
+    <div className="page">
+      <Header />
       <Routes>
         <Route  path='/' element={<Main />} />
         <Route path='/movies' element={<Movies/>} />
@@ -23,6 +26,7 @@ function App() {
         <Route path='/signin' element={<Login />} />
         <Route path='*' element={<Error />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

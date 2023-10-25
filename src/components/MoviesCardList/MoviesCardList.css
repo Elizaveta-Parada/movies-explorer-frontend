@@ -12,31 +12,36 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); */
     column-gap: 20px;
     row-gap: 32px;
     justify-items: center;
+    justify-content: center;
     margin-bottom: 30px;
     margin-top: 80px;
+    padding-left: 15px;
 }
 
 @media screen and (max-width: 800px) {
     .movies__list {
         max-width: 708px;
-        grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
-        column-gap: calc(1px + (30 - 20)*((100vw - 320px)/(800 - 320)));
+        /* grid-template-columns: repeat(auto-fit, minmax(339px, 1fr)); */
+        column-gap: 30px;
         row-gap: 36px;
+        padding-left: 10px;
     }
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 560px) {
     
     .movies__list {
         max-width: 300px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
+        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+        gap: 19px;
         margin-top: 50px;
     }
 }

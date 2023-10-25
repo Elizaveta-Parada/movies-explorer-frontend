@@ -14,6 +14,7 @@
         "link photo";
     margin-top: calc(60px + (66 - 60)*((100vw - 320px)/(1280 - 320)));
     column-gap: calc(49px + (270 - 49)*((100vw - 768px)/(1280 - 768)));
+    padding-left: 20px;
 }
 
 .about-me__title {
@@ -27,6 +28,7 @@
     margin: 0 auto;
     padding-bottom: calc(28px + (23 - 28)*((100vw - 320px)/(1280 - 320)));
     margin-top: calc(70px + (110 - 70)*((100vw - 320px)/(1280 - 320)));
+    padding-left: 20px;
 }
 
 .about-me__info {
@@ -82,7 +84,7 @@
     .about-me__title {
         max-width: 668px;
         margin-top: 92px;
-        padding-bottom: 22px;
+        padding-bottom: 25px;
     }
 
     .about-me__area {
@@ -120,7 +122,11 @@
             "info"
             "link";
         gap: 40px;
-        
+        max-width: 300px;
+    }
+
+    .about-me__title {
+        max-width: 292px;
     }
 
     .about-me__info-title {
@@ -143,6 +149,7 @@
             letter-spacing: -0.72px;
             margin-top: 50px;
             padding-bottom: 28px;
+            padding-left: 12px;
         }
 
         .about-me__area {

@@ -5,10 +5,13 @@
     align-items: center;
 }
 
+.movies-gap {
+    min-height: 140px;
+}
+
 
 @media screen and (max-width: 600px) {
     .saved__movies {
         margin-bottom: 140px;
     }
-    
 }

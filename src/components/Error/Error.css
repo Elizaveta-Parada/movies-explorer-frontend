@@ -1,10 +1,15 @@
 .error {
     display: flex;
-    flex-direction: column;
     align-items: center;
     height: 100vh;
     max-width: 1280px;
     justify-content: center;
+}
+
+.error__container {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .error__title {
@@ -13,6 +18,7 @@
     font-weight: 400;
     line-height: normal;
     margin: 0;
+    padding-top: 105px;
     padding-bottom: 5px;
 }
 

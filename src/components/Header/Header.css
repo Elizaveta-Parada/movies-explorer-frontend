@@ -1,8 +1,29 @@
 .header {
-    background: #465DFF;
+    /* background: #465DFF; */
     width: 100%;
     margin: 0 auto;
+    /* color: #FFF; */
+}
+
+.header__main {
+    background: #465DFF;
     color: #FFF;
+}
+
+.header__login {
+    display: flex;
+    flex-direction: column;
+    width: calc(260px + (396 - 260)*((100vw - 320px)/(768 - 320)));
+    max-width: 396px;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.header__title {
+    margin: 36px 0 38px 0;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .header__contant {
@@ -13,6 +34,7 @@
     margin: 0 auto;
     min-height: 74px;
     align-items: center;
+    padding-left: 20px;
 }
 
 .header__logo {
@@ -44,7 +66,7 @@
     opacity: 0.7;
 }
 
-.header__btn {
+.header__link_btn {
     border-radius: 3px;
     background: #2BE080;
     text-decoration: none;
@@ -57,31 +79,39 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + (12 - 10)*((100vw - 320px)/(1280 - 320)));
+    font-size: 12px;
     font-weight: 500;
     line-height: 16px;
     padding: 0;
     cursor: pointer;
-}
-
-.header__btn:hover {
-    opacity: 0.8;
-}
-
-.header__btn-link {
     color: black;
-    text-decoration: none;
+}
+
+.header__link_btn:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 800px) {
     .header__link {
         font-size: 12px;
     }
+
+    .header__contant {
+        width: calc(292px + (708 - 292)*((100vw - 320px)/(768 - 320)));
+        padding-left: calc(15px + (20 - 15)*((100vw - 320px)/(768 - 320)));
+    }
+
+    .header__login {
+        margin-top: 232px;
+        padding-left: 15px;
+    }
+
 }
 
 @media screen and (max-width: 420px) {
     .header__contant {
-        max-width: 292px;
+        width: 292px;
+        padding-left: 15px;
     }
     
     .header__container {
@@ -90,5 +120,16 @@
 
     .header__link {
         font-size: 10px;
+    }
+
+    .header__login {
+        align-items: center;
+        margin-top: 56px;
+        padding-left: 0;
+    }
+
+    .header__title {
+        margin-top: 48px;
+        margin-bottom: 80px;
     }
 }

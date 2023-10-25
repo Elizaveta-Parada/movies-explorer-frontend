@@ -5,13 +5,11 @@ import Portfolio from "../Portfolio/Portfolio";
 import NavTab from "../NavTab/NavTab";
 import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
-import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
+
 
 function Main() {
   return (
     <>
-      <Header />
       <main className="main">
         <Promo />
         <NavTab />
@@ -20,7 +18,6 @@ function Main() {
         <AboutMe />
         <Portfolio />
       </main>
-      <Footer />
     </>
   );
 }

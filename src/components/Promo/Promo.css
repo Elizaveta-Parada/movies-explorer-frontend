@@ -18,6 +18,7 @@
     position: relative;
     padding-bottom: 121px;
     padding-top: 82px;
+    padding-left: 15px;
 }
 
 .promo__title::before {
@@ -48,7 +49,7 @@
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     
     .promo__title {
         padding-bottom: 35px;
@@ -60,7 +61,7 @@
     }
 
     .promo__title::before {
-        max-width: 300px;
+        width: 300px;
     }
 
 }

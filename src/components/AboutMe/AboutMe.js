@@ -3,7 +3,7 @@ import aboutMePhoto from '..//../images/pic__COLOR_pic.png'
 
 function AboutMe() {
     return (
-        <section className='about-me'>
+        <section className='about-me' id='Студент'>
             <h2 className='about-me__title'>Студент</h2>
             <div className='about-me__area'>
                 <article className='about-me__info'>
@@ -20,7 +20,6 @@ function AboutMe() {
                     alt="Фото автора" />
             </div>
         </section>
-
     )
 }
 

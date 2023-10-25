@@ -4,22 +4,26 @@
     display: flex;
     gap: 14px;
     flex-direction: column;
+    max-width: 360px;
 }
 
 .card__image {
     width: 270px;
-    height: 151px;
+    height: 100%;
     background-color: #FFFFFF;
     border: none;
     box-sizing: border-box;
-    position: relative;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
     display: block;
 
 }
 
 .card__group {
-    width: 246px;
-    margin: auto;
+    max-width: 270px;
+    width: calc(100% - 24px);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -33,8 +37,8 @@
     box-shadow: none;
     border-style: none;
     background-color: #FFFFFF;
-    width: 16px;
-    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
     padding: 0;
     border: none;
     border-radius: 10px;
@@ -48,7 +52,7 @@
 .card__save-active {
     background-image: url(../../images/save8.svg);
     background-position: center;
-  }
+}
 
 .card__container {
     display: flex;
@@ -64,7 +68,10 @@
     line-height: normal;
     margin: 0;
     box-sizing: border-box;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .card__time {
@@ -77,8 +84,8 @@
 
 .card__delete {
     background-image: url(../../images/delete.png);
-    width: 16px;
-    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
     flex-shrink: 0;
     border-style: none;
     background-color: #FFFFFF;
@@ -89,14 +96,14 @@
     opacity: 0.8;
 }
 
-@media screen and (max-width: 800px) {
-    .card__image {
+@media screen and (max-width: 1020px) {
+       .card__image {
         width: 339px;
         height: 190px;
     }
 
     .card__group {
-        width: 315px;
+        max-width: 339px;
     }
 }
 
@@ -107,6 +114,7 @@
     }
 
     .card__group {
-        width: 276px;
+        max-width: 300px;
     }
+
 }
