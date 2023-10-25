@@ -21,7 +21,7 @@ function Portfolio() {
                     </a>
                 </li>
                 <li className='portfolio__list'>
-                    <a className='portfolio__link' href='https://elizaveta-parada.github.io/mesto-react/' target="_blank"
+                    <a className='portfolio__link' href='https://github.com/Elizaveta-Parada/mesto-react' target="_blank"
                         rel="noopener noreferrer">
                         <h3 className='portfolio__subtitle'>Одностраничное&nbsp;приложение</h3>
                         <span className='portfolio__image' />
