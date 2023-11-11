@@ -2,7 +2,7 @@ import './Register.css'
 import { useState } from 'react';
 
 
-function Register() {
+function Register({ onRegister }) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,10 +19,15 @@ function Register() {
         setPassword(e.target.value);
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        onRegister(email, password, name);
+    }
+
     return (
         <main>
             <section className="login">
-                    <form className="login__form">
+                    <form className="login__form" onSubmit={handleSubmit}>
                         <label className='login__form-text'>Имя</label>
                         <input className="login__form-input"
                             name="Имя"
@@ -33,7 +38,7 @@ function Register() {
                             minLength='2'
                             maxLength='30'
                             onChange={handleChangeName}
-                            autoComplete="username"
+                            autoComplete="name"
                         ></input>
                         <label className='login__form-text'>E-mail</label>
                         <input className="login__form-input"
@@ -53,9 +58,10 @@ function Register() {
                             value={password || ""}
                             required
                             onChange={handleChangePassword}
+                            autoComplete="current-password"
                         ></input>
                         <span className='login__massege'>Что-то пошло не так...</span>
-                        <button className="login__btn" type="submit" >Зарегистрироваться</button>
+                        <button className="login__btn" type="submit" onSubmit={handleSubmit}>Зарегистрироваться</button>
                     </form>
             </section>
         </main>

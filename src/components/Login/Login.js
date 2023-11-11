@@ -1,57 +1,79 @@
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import useValidation from '../../hooks/useValidation';
+import { EMAIL_REGEX } from '../../utils/constants';
 import './Login.css'
-// import Logo from '../../images/logo.svg'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-function Login() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+function Login({ onLogin, message }) {
+    const currentUser = useContext(CurrentUserContext);
+    const [activeMessage, setActiveMessage] = useState('');
+    const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
 
-    function handleChangeEmail(e) {
-        setEmail(e.target.value);
+    function handleChangeValues(e) {
+        handleChange(e)
+        setActiveMessage('')
     }
 
-    function handleChangePassword(e) {
-        setPassword(e.target.value);
-    }
-
-    function resetForm() {
-        setEmail("");
-        setPassword("")
+    function handleSubmit(e) {
+        e.preventDefault();
+        onLogin(values.email, values.password)
     }
 
     useEffect(() => {
-        resetForm()
-    }, []);
+        if (currentUser) {
+            resetForm(currentUser, {}, true);
+        }
+    }, [currentUser, resetForm]);
+
+    useEffect(() => {
+        if (message) {
+          setIsValid(false);
+          setActiveMessage(message);
+        }
+      }, [message, setIsValid]);
+
 
     return (
         <main>
             <section className="login">
-                    <form className="login__form">
-                        <fieldset className='login__form-fieldset'>
-                            <label className='login__form-text'>E-mail</label>
-                            <input className="login__form-input"
-                                name="email"
-                                type="email"
-                                placeholder="pochta@yandex.ru"
-                                value={email || ""}
-                                required
-                                autoComplete="username"
-                                onChange={handleChangeEmail}></input>
-                            <label className='login__form-text'>Пароль</label>
-                            <input className="login__form-input"
-                                name="password"
-                                type="password"
-                                placeholder="пароль"
-                                value={password || ""}
-                                autoComplete="current-password"
-                                required
-                                onChange={handleChangePassword}></input>
-                        </fieldset>
-                        <div className="login__button">
-                            <Link className='login__button-link' to='/movies'>Войти</Link>
-                        </div>
-                    </form>
+                <h1 className="header__title">Рады видеть!</h1>
+                <form className="login__form" onSubmit={handleSubmit} noValidate>
+                    <fieldset className='login__form-fieldset'>
+                        <label className='login__form-text'>E-mail</label>
+                        <input className="login__form-input"
+                            name="email"
+                            type="email"
+                            placeholder="pochta@yandex.ru"
+                            value={values.email || ""}
+                            minLength="2"
+                            pattern={EMAIL_REGEX}
+                            required
+                            autoComplete="username"
+                            onChange={handleChangeValues}></input>
+                        <span className="login__form-input_error">{errors.email || ''}</span>
+                        <label className='login__form-text'>Пароль</label>
+                        <input className="login__form-input"
+                            name="password"
+                            type="password"
+                            placeholder="пароль"
+                            value={values.password || ""}
+                            autoComplete="current-password"
+                            minLength="2"
+                            required
+                            onChange={handleChangeValues}></input>
+                        <span className="login__form-input_error">{errors.password || ''}</span>
+                    </fieldset>
+                    <span
+                        className={`login__massege ${errors ? 'block__hide' : 'profile__error'
+                            }`}
+                    >
+                        {activeMessage}
+                    </span>
+                    <button className="login__btn"
+                        type="submit"
+                        onSubmit={handleSubmit}
+                        disabled={!isValid}>Войти</button>
+                </form>
             </section>
         </main>
     )

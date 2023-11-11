@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import image from '../../images/card1.jpg'
+// import image from '../../images/card1.jpg'
 import './MoviesCard.css';
 
 
 
-function MoviesCard() {
+function MoviesCard({movie}) {
     const pathname = useLocation().pathname
 
     function handleSave() {
@@ -15,10 +15,10 @@ function MoviesCard() {
     }
     return (
         <article className="card">
-            <img className="card__image" src={image} alt="33 слова о дизайне" />
+            <img className="card__image" src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU} />
             <div className="card__group">
                 <div className="card__container">
-                    <h2 className="card__title">33 слова о дизайне</h2>
+                    <h2 className="card__title">{movie.nameRU}</h2>
                     {pathname ==='/saved-movies' ? 
                     <button type="button" className="card__delete" aria-label="Удалить" />  :
                     <button type="button" className='card__save' onClick={handleSave}/>

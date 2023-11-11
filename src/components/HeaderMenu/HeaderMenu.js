@@ -12,7 +12,7 @@ function HeaderMenu() {
             <div>
                 <Navigation />
             </div>
-                <Link className="menu__btn" to="/profile">Аккаунт</Link>
+            <Link className="menu__btn" to="/profile">Аккаунт</Link>
         </div>
     );
 }

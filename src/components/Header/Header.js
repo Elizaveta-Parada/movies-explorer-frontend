@@ -5,7 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 
 
-function Header() {
+function Header({isLoggedIn}) {
     return (
         <header className="header">
             <Routes>
@@ -29,7 +29,6 @@ function Header() {
                         <Link to="/">
                             <img className="header__logo" src={Logo} alt="Логотип" />
                         </Link>
-                        <p className="header__title">Рады видеть!</p>
                     </div>
                 } />
                 <Route path="/signup" element={
@@ -40,7 +39,7 @@ function Header() {
                         <p className="header__title">Добро пожаловать!</p>
                     </div>
                 } />
-                <Route path="/profile" element={<HeaderMenu />} />
+                <Route path="/profile" element={<HeaderMenu isLoggedIn={isLoggedIn}/>} />
                 <Route path="/movies" element={<HeaderMenu />} />
                 <Route path="/saved-movies" element={<HeaderMenu />} />
             </Routes>
