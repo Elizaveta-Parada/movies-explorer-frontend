@@ -21,7 +21,6 @@ function Header({isLoggedIn}) {
                                     <Link className="header__link header__link_btn" to="/signin">Войти</Link>
                                 </nav>
                             </div>
-
                         </div>
                     </>} />
                 <Route path="/signin" element={

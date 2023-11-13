@@ -22,10 +22,11 @@ function App() {
   const jwt = localStorage.getItem('jwt')
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({})
-  const [movies, setMovies] = useState([])
+  const [savedMovies, setSavedMovies] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
+  const [isError, setIsError] = useState(false)
   const [isCheckToken, setIsCheckToken] = useState(true)
 
   // Получение данных пользователя и фильмов с сервера
@@ -37,7 +38,7 @@ function App() {
       ])
         .then(([dataUserInfo, dataMovie]) => {
           setCurrentUser(dataUserInfo)
-          setMovies(dataMovie.reverse())
+          setSavedMovies(dataMovie.reverse())
           setIsCheckToken(false)
         })
         .catch((error) => { console.log(`Ошибка при загрузке страницы ${error}`) })
@@ -67,7 +68,7 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        if (!res || res.status === 400) {
+        if (!res || res.status === 'код ошибки: 401') {
           setMessage("Неверное имя пользователя или пароль")
         };
         if (res.token) {
@@ -75,14 +76,27 @@ function App() {
           setIsLoggedIn(true);
           setMessage('')
           navigate('/movies')
+          setIsError(false)
         }
       })
-      .catch((error) => {
-        console.error(`ошибка: ${error}`);
-        if (error === 401) { setMessage("Неверное имя пользователя или пароль")}
-      })
+      .catch((err) => {
+        setIsError(true)
+        if (err === 'код ошибки: 400') {
+          setMessage('Переданы не корректные данные для авторизации');
+        }
+        if (err === 'код ошибки: 401') {
+          setMessage('Вы ввели неправильный логин или пароль.');
+        }
+        if (err === 'код ошибки: 500') {
+          setMessage('На сервере произошла ошибка.');
+        } else {
+          setMessage(
+            'При авторизации произошла ошибка. Токен не передан или передан не в том формате.'
+          );
+        }})
   }
 
+//Регистрация нового пользователя
   function handleRegisterSubmit(email, password, name) {
     auth
       .register(email, password, name)
@@ -90,13 +104,22 @@ function App() {
         if (res) {
           setIsLoggedIn(false)
           handleLoginSubmit(email, password)
+          setMessage('')
+          setIsError(false)
         }
       })
       .catch((error) => {
-        console.error(`ошибка при регистрации ${error}`);
-      })
+        setIsError(true)
+        console.error(`ошибка: ${error}`);
+        if (error === 'код ошибки: 409') {
+          setMessage('Пользователь с таким email уже существует');
+        } else {
+          setMessage('При регистрации пользователя произошла ошибка.');
+        }
+      });
   }
 
+  //Изменение данных пользователя
   function handleUpdateUser(name, email) {
     mainApi
       .setUserInfo(name, email)
@@ -107,18 +130,46 @@ function App() {
       })
       .catch((error) => {
         console.error(`ошибка: ${error}`);
-        if (error ===  409) {
+        if (error ===  'код ошибки: 409') {
           setMessage('Пользователь с таким email уже существует');
-        } 
+        } else {
+          setMessage('При обновлении профиля произошла ошибка')
+        }
       });
   }
 
+
+// Выход пользователия из аккаунта
   function handleSignOut() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     navigate('/signin');
   }
 
+// Удаление фильма из сохраненных фильмов
+  function removeFromSavedMovies(deletemovieId) {
+    mainApi
+      .deleteMovie(deletemovieId, jwt)
+      .then(() => {
+        setSavedMovies(savedMovies.filter(movie => { return movie._id !== deletemovieId}))
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function addToSavedMovies(data) {
+    const isAdded = savedMovies.some((element) => data.id === element.movieId);
+    if (isAdded) {
+      const movieToRemove = savedMovies.find((movie) => movie.movieId === data.id);
+      removeFromSavedMovies(movieToRemove._id);
+    } else {
+      mainApi
+        .postMovie(data, jwt)
+        .then((res) => {
+          setSavedMovies([res, ...savedMovies]);
+        })
+        .catch((err) => console.log(err));
+    }
+  }
 
   return (
     <div className="page">
@@ -131,15 +182,18 @@ function App() {
             <Route path='/movies' element={
               <ProtectedRoute
                 component={Movies}
-                movies={movies}
+                savedMovies={savedMovies}
                 isLoggedIn={isLoggedIn}
+                addMovie={addToSavedMovies}
               />}
             />
             <Route path='/saved-movies' element={
               <ProtectedRoute
                 component={SavedMovies}
-                movies={movies}
-                isLoggedIn={isLoggedIn} />} />
+                savedMovies={savedMovies}
+                isLoggedIn={isLoggedIn} 
+                // addMovie={handleCardLike}
+                onClickRemove={removeFromSavedMovies}/>} />
             <Route path='/profile' element={
               <ProtectedRoute
                 component={Profile}
@@ -150,8 +204,8 @@ function App() {
                 edit={edit}
                 setEdit={setEdit} />
             } />
-            <Route path='/signup' element={<Register onRegister={handleRegisterSubmit} />} />
-            <Route path='/signin' element={<Login onLogin={handleLoginSubmit} message={message} />} />
+            <Route path='/signup' element={<Register onRegister={handleRegisterSubmit} setIsError={setIsError} message={message} />} />
+            <Route path='/signin' element={<Login onLogin={handleLoginSubmit} message={message} setIsError={setIsError} />} />
             <Route path='*' element={<Error />} />
           </Routes>
           <Footer />

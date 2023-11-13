@@ -19,6 +19,9 @@
     display: block;
 
 }
+.card__image-src {
+    width: 100%;
+}
 
 .card__group {
     max-width: 270px;

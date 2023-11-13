@@ -4,10 +4,14 @@ import { EMAIL_REGEX } from '../../utils/constants';
 import './Login.css'
 import { useContext, useEffect, useState } from 'react'
 
-function Login({ onLogin, message }) {
+function Login({ onLogin, message, setIsError }) {
     const currentUser = useContext(CurrentUserContext);
     const [activeMessage, setActiveMessage] = useState('');
     const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
+
+    useEffect(() => {
+        setIsError(false)
+    }, [setIsError])
 
     function handleChangeValues(e) {
         handleChange(e)
@@ -21,16 +25,16 @@ function Login({ onLogin, message }) {
 
     useEffect(() => {
         if (currentUser) {
-            resetForm(currentUser, {}, true);
+            resetForm({}, true);
         }
     }, [currentUser, resetForm]);
 
     useEffect(() => {
         if (message) {
-          setIsValid(false);
-          setActiveMessage(message);
+            setIsValid(false);
+            setActiveMessage(message);
         }
-      }, [message, setIsValid]);
+    }, [message, setIsValid]);
 
 
     return (
@@ -50,7 +54,7 @@ function Login({ onLogin, message }) {
                             required
                             autoComplete="username"
                             onChange={handleChangeValues}></input>
-                        <span className="login__form-input_error">{errors.email || ''}</span>
+                        <span className="login__form-input_error">{errors.email || activeMessage || ''}</span>
                         <label className='login__form-text'>Пароль</label>
                         <input className="login__form-input"
                             name="password"
@@ -63,12 +67,6 @@ function Login({ onLogin, message }) {
                             onChange={handleChangeValues}></input>
                         <span className="login__form-input_error">{errors.password || ''}</span>
                     </fieldset>
-                    <span
-                        className={`login__massege ${errors ? 'block__hide' : 'profile__error'
-                            }`}
-                    >
-                        {activeMessage}
-                    </span>
                     <button className="login__btn"
                         type="submit"
                         onSubmit={handleSubmit}
