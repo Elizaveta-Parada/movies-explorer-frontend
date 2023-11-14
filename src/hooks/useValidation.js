@@ -13,6 +13,7 @@ export default function useValidation() {
     if (name === 'name' && target.validity.patternMismatch) {
       target.setCustomValidity('Имя не должно содержать специальных символов');
       setIsValid(false);
+      setErrors(false)
     }
     else {
       target.setCustomValidity('');

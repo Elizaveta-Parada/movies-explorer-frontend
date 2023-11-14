@@ -5,24 +5,26 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 
 
-function Header({isLoggedIn}) {
+function Header({ isLoggedIn }) {
     return (
         <header className="header">
             <Routes>
                 <Route path="/" element={
                     <>
                         <div className="header__main">
-                            <div className="header__contant">
-                                <Link to="/">
-                                    <img className="header__logo" src={Logo} alt="Логотип" />
-                                </Link>
-                                <nav className="header__container">
-                                    <Link to="/signup" className="header__link">Регистрация</Link>
-                                    <Link className="header__link header__link_btn" to="/signin">Войти</Link>
-                                </nav>
-                            </div>
+                            {isLoggedIn ? <HeaderMenu /> :
+                                <div className="header__contant">
+                                    <Link to="/">
+                                        <img className="header__logo" src={Logo} alt="Логотип" />
+                                    </Link>
+                                    <nav className="header__container">
+                                        <Link to="/signup" className="header__link">Регистрация</Link>
+                                        <Link className="header__link header__link_btn" to="/signin">Войти</Link>
+                                    </nav>
+                                </div>}
                         </div>
-                    </>} />
+                    </>
+                } />
                 <Route path="/signin" element={
                     <div className="header__login">
                         <Link to="/">
@@ -38,7 +40,7 @@ function Header({isLoggedIn}) {
                         <p className="header__title">Добро пожаловать!</p>
                     </div>
                 } />
-                <Route path="/profile" element={<HeaderMenu isLoggedIn={isLoggedIn}/>} />
+                <Route path="/profile" element={<HeaderMenu isLoggedIn={isLoggedIn} />} />
                 <Route path="/movies" element={<HeaderMenu />} />
                 <Route path="/saved-movies" element={<HeaderMenu />} />
             </Routes>

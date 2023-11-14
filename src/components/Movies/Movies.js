@@ -5,13 +5,14 @@ import * as moviesApi from '../../utils/MoviesApi'
 import './Movies.css'
 
 
-function Movies({ savedMovies, addMovie }) {
+function Movies({ savedMovies, addMovie, setIsError, isError }) {
     const [allMovies, setAllMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [isCheck, setIsCheck] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [serverError, setServerError] = useState(false);
+    const [activeMessage, setActiveMessage] = useState('');
 
     const filter = useCallback((search, isCheck, movies) => {
         setSearchQuery(search)
@@ -31,12 +32,14 @@ function Movies({ savedMovies, addMovie }) {
                 .then((res) => {
                     setAllMovies(res)
                     setIsCheck(false)
-                    setServerError(false)
                     filter(search, isCheck, res)
+                    setActiveMessage('')
                 })
                 .catch(err => {
-                    serverError(true)
                     console.log(`Oшибка при поиске фильмов ${err}`)
+                    setServerError(true)
+                    setActiveMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+
 
                 })
                 .finally(() => setIsLoading(false))
@@ -69,21 +72,23 @@ function Movies({ savedMovies, addMovie }) {
         }
     }
 
-
     return (
         <main>
             <SearchForm
                 searchMovies={searchMovies}
                 changeShort={changeShort}
                 isCheck={isCheck}
-                setIsError={serverError}
-                searchQuery={searchQuery} />
+                setIsError={setIsError}
+                searchQuery={searchQuery}
+                isError={isError}
+            />
             <MoviesCardList
                 filteredMovies={filteredMovies}
                 savedMovies={savedMovies}
                 addMovie={addMovie}
                 isLoading={isLoading}
                 serverError={serverError}
+                activeMessage={activeMessage}
             />
         </main>
     );

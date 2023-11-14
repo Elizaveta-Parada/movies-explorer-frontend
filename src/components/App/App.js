@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import Preloader from '../Preloader/Preloader'
+
 
 
 
@@ -27,7 +27,7 @@ function App() {
   const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
   const [isError, setIsError] = useState(false)
-  const [isCheckToken, setIsCheckToken] = useState(true)
+
 
   // Получение данных пользователя и фильмов с сервера
   useEffect(() => {
@@ -39,9 +39,10 @@ function App() {
         .then(([dataUserInfo, dataMovie]) => {
           setCurrentUser(dataUserInfo)
           setSavedMovies(dataMovie.reverse())
-          setIsCheckToken(false)
         })
-        .catch((error) => { console.log(`Ошибка при загрузке страницы ${error}`) })
+        .catch((error) => {
+          console.log(`Ошибка при загрузке страницы ${error}`)
+        })
     }
   }, [isLoggedIn, jwt])
 
@@ -93,10 +94,11 @@ function App() {
           setMessage(
             'При авторизации произошла ошибка. Токен не передан или передан не в том формате.'
           );
-        }})
+        }
+      })
   }
 
-//Регистрация нового пользователя
+  //Регистрация нового пользователя
   function handleRegisterSubmit(email, password, name) {
     auth
       .register(email, password, name)
@@ -130,7 +132,7 @@ function App() {
       })
       .catch((error) => {
         console.error(`ошибка: ${error}`);
-        if (error ===  'код ошибки: 409') {
+        if (error === 'код ошибки: 409') {
           setMessage('Пользователь с таким email уже существует');
         } else {
           setMessage('При обновлении профиля произошла ошибка')
@@ -138,20 +140,20 @@ function App() {
       });
   }
 
-
-// Выход пользователия из аккаунта
+  // Выход пользователия из аккаунта
   function handleSignOut() {
     localStorage.removeItem('jwt');
+    localStorage.clear()
     setIsLoggedIn(false);
-    navigate('/signin');
+    navigate('/');
   }
 
-// Удаление фильма из сохраненных фильмов
+  // Удаление фильма из сохраненных фильмов
   function removeFromSavedMovies(deletemovieId) {
     mainApi
       .deleteMovie(deletemovieId, jwt)
       .then(() => {
-        setSavedMovies(savedMovies.filter(movie => { return movie._id !== deletemovieId}))
+        setSavedMovies(savedMovies.filter(movie => { return movie._id !== deletemovieId }))
       })
       .catch((err) => console.log(err));
   }
@@ -173,44 +175,50 @@ function App() {
 
   return (
     <div className="page">
-      {isCheckToken ? <Preloader /> :
-        <CurrentUserContext.Provider value={currentUser}>
-          <Header
-            isLoggedIn={isLoggedIn} />
-          <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/movies' element={
-              <ProtectedRoute
-                component={Movies}
-                savedMovies={savedMovies}
-                isLoggedIn={isLoggedIn}
-                addMovie={addToSavedMovies}
-              />}
-            />
-            <Route path='/saved-movies' element={
-              <ProtectedRoute
-                component={SavedMovies}
-                savedMovies={savedMovies}
-                isLoggedIn={isLoggedIn} 
-                // addMovie={handleCardLike}
-                onClickRemove={removeFromSavedMovies}/>} />
-            <Route path='/profile' element={
-              <ProtectedRoute
-                component={Profile}
-                isLoggedIn={isLoggedIn}
-                signOut={handleSignOut}
-                updateUser={handleUpdateUser}
-                message={message}
-                edit={edit}
-                setEdit={setEdit} />
-            } />
-            <Route path='/signup' element={<Register onRegister={handleRegisterSubmit} setIsError={setIsError} message={message} />} />
-            <Route path='/signin' element={<Login onLogin={handleLoginSubmit} message={message} setIsError={setIsError} />} />
-            <Route path='*' element={<Error />} />
-          </Routes>
-          <Footer />
-        </CurrentUserContext.Provider>
-      }
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          isLoggedIn={isLoggedIn} />
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/movies' element={
+            <ProtectedRoute
+              component={Movies}
+              savedMovies={savedMovies}
+              isLoggedIn={isLoggedIn}
+              addMovie={addToSavedMovies}
+              setIsError={setIsError}
+              isError={isError}
+              message={message}
+              setMessage={setMessage}
+            />}
+          />
+          <Route path='/saved-movies' element={
+            <ProtectedRoute
+              component={SavedMovies}
+              savedMovies={savedMovies}
+              isLoggedIn={isLoggedIn}
+              onClickRemove={removeFromSavedMovies}
+              message={message}
+              setIsError={setIsError}
+              isError={isError}
+            />}
+          />
+          <Route path='/profile' element={
+            <ProtectedRoute
+              component={Profile}
+              isLoggedIn={isLoggedIn}
+              signOut={handleSignOut}
+              updateUser={handleUpdateUser}
+              message={message}
+              edit={edit}
+              setEdit={setEdit} />
+          } />
+          <Route path='/signup' element={<Register onRegister={handleRegisterSubmit} isError={isError} setIsError={setIsError} message={message} />} />
+          <Route path='/signin' element={<Login onLogin={handleLoginSubmit} message={message} setIsError={setIsError} />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+        <Footer />
+      </CurrentUserContext.Provider>
     </div>
   )
 }

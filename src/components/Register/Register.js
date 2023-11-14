@@ -23,20 +23,20 @@ function Register({ onRegister, message, setIsError }) {
     function handleSubmit(e) {
         e.preventDefault();
         onRegister(values.email, values.password, values.name);
-        setActiveMessage('')
+        setActiveMessage(message)
     }
 
     useEffect(() => {
         if (currentUser) {
             resetForm({}, true);
+            setIsError(false)
         }
-    }, [currentUser, resetForm]);
+    }, [currentUser, resetForm, setIsError]);
 
     useEffect(() => {
         if (message) {
             setIsValid(false);
             setActiveMessage(message);
-            console.log(setActiveMessage(message))
         }
     }, [message, setIsValid]);
 

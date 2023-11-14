@@ -15,12 +15,13 @@ import {
   StepSmallScreen,
   InitLessMaxScreen
 } from '../../utils/constants'
-// import moviesData from '../../utils/constants'
 
-function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, onClickRemove, addMovie }) {
+function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, onClickRemove, addMovie, activeMessage }) {
   const pathname = useLocation().pathname;
   const [count, setCount] = useState('')
   const fact = filteredMovies.slice(0, count)
+  const [notFound, setNotFound] = useState(false)
+  const [message, setMessage] = useState('')
 
   function printMovies() {
     const counter = { init: InitMoreMaxScreen, step: StepMaxScreen }
@@ -65,8 +66,21 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
     setCount(count + printMovies().step)
   }
 
+  useEffect(() => {
+    if (fact.length !== 0) {
+      setNotFound(false);
+      setMessage('')
+    } else {
+      setMessage('Ничего не найдено')
+      setNotFound(true)
+    }
+  }, [fact]);
+
+
   return (
     <section className="movies">
+      <span className={`movies__err ${!serverError ? 'block__hide' : ''}`}>{activeMessage}</span>
+      <span className={`movies__err ${!notFound ? 'block__hide' : ''}`}>{message}</span>
       <ul className="movies__list">
         {isLoading ? <Preloader /> :
           (pathname === '/movies' && fact.lenght !== 0) ?
@@ -77,7 +91,8 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
                 savedMovies={savedMovies}
                 addMovie={addMovie}
               />)
-            }) : filteredMovies.lenght !== 0 ?
+            }) :
+            (filteredMovies.lenght !== 0) ?
               filteredMovies.map((data, _id) => {
                 return (<MoviesCard
                   data={data}
@@ -85,18 +100,15 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
                   onClickRemove={onClickRemove}
                   addMovie={addMovie}
                 />)
-              }) : serverError ?
-                <span>«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.
-                  Подождите немного и попробуйте ещё раз»</span>
-                : <span>«Ничего не найдено»</span>
+              }) :
+              (<></>)
         }
       </ul>
-      {pathname === '/movies' ? 
-      <button type='button' 
-      className={`movies__button ${count >= filteredMovies.lenght && 'movies__button_hidden'}`} 
-      onClick={clickMore}>Ещё
-      </button> : ''}
-      
+      {pathname === '/movies' ?
+        <button type='button'
+          className={`movies__button ${count >= filteredMovies.lenght && 'movies__button_hidden'}`}
+          onClick={clickMore}>Ещё
+        </button> : ''}
     </section>
   );
 }

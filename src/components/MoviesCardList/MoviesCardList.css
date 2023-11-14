@@ -23,7 +23,7 @@
     justify-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    margin-top: 80px;
+    margin-top: 70px;
     padding-left: 15px;
 }
 
@@ -45,6 +45,25 @@
     line-height: normal;
     padding-left: 15px;
     border: none;
+    visibility: visible;
+}
+
+.movies__button_hidden {
+    display: none;
+}
+
+.movies__err {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    text-align: center;
+    margin-top: 15px;
+
 }
 
 @media screen and (max-width: 800px) {

@@ -26,6 +26,12 @@
     color: black;
 }
 
+
+.menu__link-auth {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .menu__link:hover {
     opacity: 0.7;
 }

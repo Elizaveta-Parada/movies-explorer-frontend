@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 
 function MoviesCard({ data, addMovie, savedMovies, onClickRemove }) {
-    console.log(savedMovies)
     const pathname = useLocation().pathname
     const [click, setClick] = useState(false)
 

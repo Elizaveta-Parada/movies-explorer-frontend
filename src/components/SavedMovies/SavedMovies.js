@@ -4,7 +4,7 @@ import './SavedMovies.css'
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 
-function SavedMovies({ savedMovies, onClickRemove }) {
+function SavedMovies({ savedMovies, onClickRemove,  setIsError, isError}) {
     const [filteredMovies, setFilteredMovies] = useState(savedMovies)
     const [searchQuery, setSearchQuery] = useState('');
     const [isCheck, setIsCheck] = useState(false)
@@ -43,6 +43,8 @@ function SavedMovies({ savedMovies, onClickRemove }) {
             changeShort={changeShort}
             savedMovies={savedMovies}
             searchQuery={searchQuery}
+            setIsError={setIsError}
+            isError={isError}
             />
             <MoviesCardList
             onClickRemove={onClickRemove}
