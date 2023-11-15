@@ -26,4 +26,4 @@ Frontend приложение со следующими возможностям
 ## Ссылки на проект
 Frontend  https://frontend.movies.ep.nomoredomainsrocks.ru;
 Backend  https://api.movies.ep.nomoredomainsrocks.ru;
-IP 10.128.0.32;
+IP 158.160.44.57;
