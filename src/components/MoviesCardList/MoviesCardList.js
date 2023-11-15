@@ -18,7 +18,7 @@ import {
 
 function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, onClickRemove, addMovie, activeMessage }) {
   const pathname = useLocation().pathname;
-  const [count, setCount] = useState('')
+  const [count, setCount] = useState(InitMoreMaxScreen)
   const fact = filteredMovies.slice(0, count)
   const [notFound, setNotFound] = useState(false)
   const [message, setMessage] = useState('')
@@ -67,14 +67,14 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
   }
 
   useEffect(() => {
-    if (fact.length !== 0) {
+    if (fact.length !== 0 && filteredMovies.length !== 0) {
       setNotFound(false);
       setMessage('')
     } else {
       setMessage('Ничего не найдено')
       setNotFound(true)
     }
-  }, [fact]);
+  }, [fact, filteredMovies.length]);
 
 
   return (
@@ -101,12 +101,12 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
                   addMovie={addMovie}
                 />)
               }) :
-              (<></>)
+              (null)
         }
       </ul>
-      {pathname === '/movies' ?
+      {pathname === '/movies' && count < filteredMovies.length ?
         <button type='button'
-          className={`movies__button ${count >= filteredMovies.lenght && 'movies__button_hidden'}`}
+          className={`movies__button 'movies__button_hidden'}`}
           onClick={clickMore}>Ещё
         </button> : ''}
     </section>

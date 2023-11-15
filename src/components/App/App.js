@@ -15,7 +15,6 @@ import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-
 function App() {
   const jwt = localStorage.getItem('jwt')
   const navigate = useNavigate();
@@ -68,7 +67,7 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        if (!res || res.status ===  401) {
+        if (!res || res.status === 401) {
           setMessage("Неверное имя пользователя или пароль")
         };
         if (res.token) {
@@ -83,9 +82,6 @@ function App() {
         setIsError(true)
         if (err === 'код ошибки: 400') {
           setMessage('Переданы не корректные данные для авторизации');
-        }
-        if (err === 'код ошибки: 401') {
-          setMessage('Вы ввели неправильный логин или пароль.');
         }
         if (err === 'код ошибки: 500') {
           setMessage('На сервере произошла ошибка.');
@@ -145,6 +141,7 @@ function App() {
     localStorage.clear()
     setIsLoggedIn(false);
     navigate('/');
+    setMessage('')
   }
 
   // Удаление фильма из сохраненных фильмов
@@ -173,7 +170,7 @@ function App() {
   }
 
   return (
-    <div className="page">
+    <div className="page"> 
       <CurrentUserContext.Provider value={currentUser}>
         <Header
           isLoggedIn={isLoggedIn} />
@@ -213,18 +210,18 @@ function App() {
               setEdit={setEdit} />
           } />
           <Route path='/signup' element={
-          <Register 
-          onRegister={handleRegisterSubmit} 
-          isError={isError} 
-          setIsError={setIsError} 
-          message={message}
-          setMessage={setMessage} />} />
+            <Register
+              onRegister={handleRegisterSubmit}
+              isError={isError}
+              setIsError={setIsError}
+              message={message}
+              setMessage={setMessage} />} />
           <Route path='/signin' element={
-          <Login 
-          onLogin={handleLoginSubmit} 
-          message={message} 
-          setIsError={setIsError} 
-          setMessage={setMessage} />} />
+            <Login
+              onLogin={handleLoginSubmit}
+              message={message}
+              setIsError={setIsError}
+              setMessage={setMessage} />} />
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />

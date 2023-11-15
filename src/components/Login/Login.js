@@ -25,6 +25,7 @@ function Login({ onLogin, message, setIsError, setMessage }) {
         e.preventDefault();
         onLogin(values.email, values.password)
         setActiveMessage(message)
+        setMessage('')
     }
 
     useEffect(() => {
@@ -76,7 +77,6 @@ function Login({ onLogin, message, setIsError, setMessage }) {
                     </fieldset>
                     <button className="login__btn"
                         type="submit"
-                        onSubmit={handleSubmit}
                         disabled={!isValid}>Войти</button>
                 </form>
             </section>

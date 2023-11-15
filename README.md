@@ -19,7 +19,7 @@ Frontend приложение со следующими возможностям
 * API (POST, GET, PUT, DELETE)
 * React
 
-Адрес репозитория: https://github.com/Elizaveta-Parada/movies-explorer-frontend/pull/2
+Адрес репозитория: https://github.com/Elizaveta-Parada/movies-explorer-frontend/pull/3
 
 Макет: light-2
 
