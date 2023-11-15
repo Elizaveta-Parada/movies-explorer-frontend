@@ -16,8 +16,6 @@ import * as mainApi from '../../utils/MainApi'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
-
-
 function App() {
   const jwt = localStorage.getItem('jwt')
   const navigate = useNavigate();
@@ -65,19 +63,20 @@ function App() {
     }
   }, [jwt])
 
+
   function handleLoginSubmit(email, password) {
     auth
       .login(email, password)
       .then((res) => {
-        if (!res || res.status === 'код ошибки: 401') {
+        if (!res || res.status ===  401) {
           setMessage("Неверное имя пользователя или пароль")
         };
         if (res.token) {
+          setIsError(false)
+          setMessage('')
           localStorage.setItem('jwt', res.token);
           setIsLoggedIn(true);
-          setMessage('')
           navigate('/movies')
-          setIsError(false)
         }
       })
       .catch((err) => {
@@ -104,10 +103,10 @@ function App() {
       .register(email, password, name)
       .then((res) => {
         if (res) {
+          setIsError(false)
+          setMessage('')
           setIsLoggedIn(false)
           handleLoginSubmit(email, password)
-          setMessage('')
-          setIsError(false)
         }
       })
       .catch((error) => {
@@ -213,8 +212,19 @@ function App() {
               edit={edit}
               setEdit={setEdit} />
           } />
-          <Route path='/signup' element={<Register onRegister={handleRegisterSubmit} isError={isError} setIsError={setIsError} message={message} />} />
-          <Route path='/signin' element={<Login onLogin={handleLoginSubmit} message={message} setIsError={setIsError} />} />
+          <Route path='/signup' element={
+          <Register 
+          onRegister={handleRegisterSubmit} 
+          isError={isError} 
+          setIsError={setIsError} 
+          message={message}
+          setMessage={setMessage} />} />
+          <Route path='/signin' element={
+          <Login 
+          onLogin={handleLoginSubmit} 
+          message={message} 
+          setIsError={setIsError} 
+          setMessage={setMessage} />} />
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />

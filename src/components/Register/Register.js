@@ -5,14 +5,17 @@ import './Register.css'
 import { useContext, useEffect, useState } from 'react';
 
 
-function Register({ onRegister, message, setIsError }) {
+function Register({ onRegister, message, setIsError, setMessage }) {
     const currentUser = useContext(CurrentUserContext);
     const [activeMessage, setActiveMessage] = useState('');
     const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
 
     useEffect(() => {
         setIsError(false)
-    }, [setIsError])
+        setActiveMessage('')
+        setMessage('')
+        resetForm({}, true);
+    }, [resetForm, setIsError, setMessage])
 
 
     function handleChangeValues(e) {
@@ -30,8 +33,10 @@ function Register({ onRegister, message, setIsError }) {
         if (currentUser) {
             resetForm({}, true);
             setIsError(false)
+            setActiveMessage('')
+            setMessage('')
         }
-    }, [currentUser, resetForm, setIsError]);
+    }, [currentUser, resetForm, setIsError, setMessage]);
 
     useEffect(() => {
         if (message) {

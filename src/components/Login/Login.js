@@ -4,14 +4,17 @@ import { EMAIL_REGEX } from '../../utils/constants';
 import './Login.css'
 import { useContext, useEffect, useState } from 'react'
 
-function Login({ onLogin, message, setIsError }) {
+function Login({ onLogin, message, setIsError, setMessage }) {
     const currentUser = useContext(CurrentUserContext);
     const [activeMessage, setActiveMessage] = useState('');
     const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
 
     useEffect(() => {
         setIsError(false)
-    }, [setIsError])
+        setActiveMessage('')
+        setMessage('')
+        resetForm({}, true);
+    }, [resetForm, setIsError, setMessage])
 
     function handleChangeValues(e) {
         handleChange(e)
@@ -21,13 +24,17 @@ function Login({ onLogin, message, setIsError }) {
     function handleSubmit(e) {
         e.preventDefault();
         onLogin(values.email, values.password)
+        setActiveMessage(message)
     }
 
     useEffect(() => {
         if (currentUser) {
             resetForm({}, true);
+            setIsError(false)
+            setActiveMessage('')
+            setMessage('')
         }
-    }, [currentUser, resetForm]);
+    }, [currentUser, resetForm, setIsError, setMessage]);
 
     useEffect(() => {
         if (message) {
