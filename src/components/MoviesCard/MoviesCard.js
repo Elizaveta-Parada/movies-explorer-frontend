@@ -18,19 +18,18 @@ function MoviesCard({ data, addMovie, savedMovies, onClickRemove }) {
     }
 
     useEffect(() => {
+        if (pathname === '/movies')
         setClick(savedMovies && savedMovies.some((element) => data.id === element.movieId));
-    }, [savedMovies, data.id]);
+    }, [savedMovies, data.id, pathname]);
 
     function handleSave() {
-        if (pathname === '/saved-movies') {
-            onClickRemove(data._id);
-        } else {
-            if (click) {
-                onClickRemove(data._id);
-            } else {
-                addMovie(data);
-            }
-        }
+       if (savedMovies && savedMovies.some((element) => data.id === element.movieId)) {
+        setClick(true)
+        addMovie(data)
+       } else {
+        setClick(false)
+        addMovie(data)
+       }   
     }
 
     return (

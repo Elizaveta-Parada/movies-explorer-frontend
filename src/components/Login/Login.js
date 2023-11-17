@@ -4,27 +4,27 @@ import { EMAIL_REGEX } from '../../utils/constants';
 import './Login.css'
 import { useContext, useEffect, useState } from 'react'
 
-function Login({ onLogin, message, setIsError, setMessage }) {
+function Login({ onLogin, message, setIsError, setMessage, isError, isSend}) {
     const currentUser = useContext(CurrentUserContext);
-    const [activeMessage, setActiveMessage] = useState('');
+    const [activeMessageLogin, setActiveMessageLogin] = useState('');
     const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
 
     useEffect(() => {
         setIsError(false)
-        setActiveMessage('')
+        setActiveMessageLogin('')
         setMessage('')
         resetForm({}, true);
     }, [resetForm, setIsError, setMessage])
 
     function handleChangeValues(e) {
         handleChange(e)
-        setActiveMessage('')
+        setActiveMessageLogin('')
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         onLogin(values.email, values.password)
-        setActiveMessage(message)
+        setActiveMessageLogin(message)
         setMessage('')
     }
 
@@ -32,7 +32,7 @@ function Login({ onLogin, message, setIsError, setMessage }) {
         if (currentUser) {
             resetForm({}, true);
             setIsError(false)
-            setActiveMessage('')
+            setActiveMessageLogin('')
             setMessage('')
         }
     }, [currentUser, resetForm, setIsError, setMessage]);
@@ -40,7 +40,9 @@ function Login({ onLogin, message, setIsError, setMessage }) {
     useEffect(() => {
         if (message) {
             setIsValid(false);
-            setActiveMessage(message);
+            setActiveMessageLogin(message);
+        } else {
+            setActiveMessageLogin('')
         }
     }, [message, setIsValid]);
 
@@ -62,7 +64,7 @@ function Login({ onLogin, message, setIsError, setMessage }) {
                             required
                             autoComplete="username"
                             onChange={handleChangeValues}></input>
-                        <span className="login__form-input_error">{errors.email || activeMessage || ''}</span>
+                        <span className="login__form-input_error">{errors.email || ''}</span>
                         <label className='login__form-text'>Пароль</label>
                         <input className="login__form-input"
                             name="password"
@@ -75,9 +77,10 @@ function Login({ onLogin, message, setIsError, setMessage }) {
                             onChange={handleChangeValues}></input>
                         <span className="login__form-input_error">{errors.password || ''}</span>
                     </fieldset>
+                    <span className='login__error'>{activeMessageLogin}</span>
                     <button className="login__btn"
                         type="submit"
-                        disabled={!isValid}>Войти</button>
+                        disabled={!isValid || isError || isSend}>Войти</button>
                 </form>
             </section>
         </main>

@@ -1,10 +1,12 @@
 const BEATFILM = 'https://api.nomoreparties.co/beatfilm-movies';
-const baseUrl = "https://api.movies.ep.nomoredomainsrocks.ru";
+// const baseUrl = "https://api.movies.ep.nomoredomainsrocks.ru";
+const baseUrl = 'http://localhost:3000'
 
 const EMAIL_REGEX = "[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}";
 const USER_NAME_REGEX = '^[A-Za-zА-Яа-яЁё /s -]+$';
 
 const MaxScreen = 1280
+const LessScreen = 1020
 const MediumScreen = 800
 const SmallScreen = 600
 const InitMoreMaxScreen = 16
@@ -29,5 +31,6 @@ export {
     StepMaxScreen,
     StepMediumScreen,
     StepSmallScreen,
-    InitLessMaxScreen
+    InitLessMaxScreen, 
+    LessScreen
   };

@@ -9,7 +9,6 @@ import Techs from "../Techs/Techs";
 
 function Main() {
   return (
-    <>
       <main className="main">
         <Promo />
         <NavTab />
@@ -18,7 +17,6 @@ function Main() {
         <AboutMe />
         <Portfolio />
       </main>
-    </>
   );
 }
 

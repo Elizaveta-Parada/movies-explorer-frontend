@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext'
 import Main from '../Main/Main';
 import './App.css';
@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
 
 function App() {
   const jwt = localStorage.getItem('jwt')
@@ -24,11 +25,13 @@ function App() {
   const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
   const [isError, setIsError] = useState(false)
+  const [isCheckToken, setIsCheckToken] = useState(true)
+  const [isSend, setIsSend] = useState(false)
 
 
   // Получение данных пользователя и фильмов с сервера
   useEffect(() => {
-    if (isLoggedIn) {
+    if (jwt) {
       Promise.all([
         mainApi.getUserInfo(jwt),
         mainApi.getMovies(jwt)
@@ -36,44 +39,32 @@ function App() {
         .then(([dataUserInfo, dataMovie]) => {
           setCurrentUser(dataUserInfo)
           setSavedMovies(dataMovie.reverse())
+          setIsLoggedIn(true)
+          setIsCheckToken(false)
         })
         .catch((error) => {
           console.log(`Ошибка при загрузке страницы ${error}`)
+          setIsCheckToken(false)
         })
+    } else {
+      setIsLoggedIn(false)
+      setIsCheckToken(false)
+      localStorage.clear()
     }
   }, [isLoggedIn, jwt])
 
 
-  // Проверка токена и авторизация пользователя
-
-  function authCheck(jwt) {
-    auth.checkToken(jwt)
-      .then((res) => {
-        if (res) {
-          setIsLoggedIn(true);
-        }
-      })
-      .catch((error) => { console.log(`Ошибка авторизации ${error}`) })
-  }
-
-  useEffect(() => {
-    if (jwt) {
-      authCheck(jwt)
-    }
-  }, [jwt])
-
-
   function handleLoginSubmit(email, password) {
+    setIsSend(true)
     auth
       .login(email, password)
       .then((res) => {
         if (!res || res.status === 401) {
           setMessage("Неверное имя пользователя или пароль")
-        };
-        if (res.token) {
+        } else {
+          localStorage.setItem('jwt', res.token)
           setIsError(false)
           setMessage('')
-          localStorage.setItem('jwt', res.token);
           setIsLoggedIn(true);
           navigate('/movies')
         }
@@ -91,10 +82,12 @@ function App() {
           );
         }
       })
+      .finally(() => { setIsSend(false) })
   }
 
   //Регистрация нового пользователя
   function handleRegisterSubmit(email, password, name) {
+    setIsSend(true)
     auth
       .register(email, password, name)
       .then((res) => {
@@ -103,6 +96,7 @@ function App() {
           setMessage('')
           setIsLoggedIn(false)
           handleLoginSubmit(email, password)
+          navigate('/movies')
         }
       })
       .catch((error) => {
@@ -113,7 +107,8 @@ function App() {
         } else {
           setMessage('При регистрации пользователя произошла ошибка.');
         }
-      });
+      })
+      .finally(() => { setIsSend(false) })
   }
 
   //Изменение данных пользователя
@@ -137,11 +132,11 @@ function App() {
 
   // Выход пользователия из аккаунта
   function handleSignOut() {
-    localStorage.removeItem('jwt');
-    localStorage.clear()
+    localStorage.clear();
     setIsLoggedIn(false);
+    setMessage('');
     navigate('/');
-    setMessage('')
+
   }
 
   // Удаление фильма из сохраненных фильмов
@@ -170,62 +165,69 @@ function App() {
   }
 
   return (
-    <div className="page"> 
-      <CurrentUserContext.Provider value={currentUser}>
-        <Header
-          isLoggedIn={isLoggedIn} />
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/movies' element={
-            <ProtectedRoute
-              component={Movies}
-              savedMovies={savedMovies}
-              isLoggedIn={isLoggedIn}
-              addMovie={addToSavedMovies}
-              setIsError={setIsError}
-              isError={isError}
-              message={message}
-              setMessage={setMessage}
-            />}
-          />
-          <Route path='/saved-movies' element={
-            <ProtectedRoute
-              component={SavedMovies}
-              savedMovies={savedMovies}
-              isLoggedIn={isLoggedIn}
-              onClickRemove={removeFromSavedMovies}
-              message={message}
-              setIsError={setIsError}
-              isError={isError}
-            />}
-          />
-          <Route path='/profile' element={
-            <ProtectedRoute
-              component={Profile}
-              isLoggedIn={isLoggedIn}
-              signOut={handleSignOut}
-              updateUser={handleUpdateUser}
-              message={message}
-              edit={edit}
-              setEdit={setEdit} />
-          } />
-          <Route path='/signup' element={
-            <Register
-              onRegister={handleRegisterSubmit}
-              isError={isError}
-              setIsError={setIsError}
-              message={message}
-              setMessage={setMessage} />} />
-          <Route path='/signin' element={
-            <Login
-              onLogin={handleLoginSubmit}
-              message={message}
-              setIsError={setIsError}
-              setMessage={setMessage} />} />
-          <Route path='*' element={<Error />} />
-        </Routes>
-        <Footer />
-      </CurrentUserContext.Provider>
+    <div className="page">
+      {isCheckToken ? <Preloader /> :
+        <CurrentUserContext.Provider value={currentUser}>
+          <Header
+            isLoggedIn={isLoggedIn} />
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/movies' element={
+              <ProtectedRoute
+                component={Movies}
+                savedMovies={savedMovies}
+                isLoggedIn={isLoggedIn}
+                addMovie={addToSavedMovies}
+                setIsError={setIsError}
+                isError={isError}
+                message={message}
+                setMessage={setMessage}
+                onClickRemove={removeFromSavedMovies}
+              />}
+            />
+            <Route path='/saved-movies' element={
+              <ProtectedRoute
+                component={SavedMovies}
+                savedMovies={savedMovies}
+                isLoggedIn={isLoggedIn}
+                onClickRemove={removeFromSavedMovies}
+                message={message}
+                setIsError={setIsError}
+                isError={isError}
+              />}
+            />
+            <Route path='/profile' element={
+              <ProtectedRoute
+                component={Profile}
+                isLoggedIn={isLoggedIn}
+                signOut={handleSignOut}
+                updateUser={handleUpdateUser}
+                message={message}
+                edit={edit}
+                setEdit={setEdit} />
+            } />
+            <Route path='/signup' element={
+              isLoggedIn ? <Navigate to='movies' replace /> :
+                <Register
+                  onRegister={handleRegisterSubmit}
+                  isError={isError}
+                  setIsError={setIsError}
+                  message={message}
+                  setMessage={setMessage}
+                  isSend={isSend} />} />
+            <Route path='/signin' element={
+              isLoggedIn ? <Navigate to='movies' replace /> :
+                <Login
+                  isError={isError}
+                  onLogin={handleLoginSubmit}
+                  message={message}
+                  setIsError={setIsError}
+                  setMessage={setMessage}
+                  isSend={isSend} />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
+          <Footer />
+        </CurrentUserContext.Provider>}
     </div>
   )
 }

@@ -5,7 +5,7 @@ import * as moviesApi from '../../utils/MoviesApi'
 import './Movies.css'
 
 
-function Movies({ savedMovies, addMovie, setIsError, isError }) {
+function Movies({ savedMovies, addMovie, setIsError, isError, onClickRemove }) {
     const [allMovies, setAllMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -89,6 +89,8 @@ function Movies({ savedMovies, addMovie, setIsError, isError }) {
                 isLoading={isLoading}
                 serverError={serverError}
                 activeMessage={activeMessage}
+                allMovies={allMovies}
+                onClickRemove={onClickRemove}
             />
         </main>
     );

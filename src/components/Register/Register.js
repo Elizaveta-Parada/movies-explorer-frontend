@@ -5,7 +5,7 @@ import './Register.css'
 import { useContext, useEffect, useState } from 'react';
 
 
-function Register({ onRegister, message, setIsError, setMessage }) {
+function Register({ onRegister, message, setIsError, setMessage, isError, isSend }) {
     const currentUser = useContext(CurrentUserContext);
     const [activeMessage, setActiveMessage] = useState('');
     const { values, handleChange, resetForm, errors, isValid, setIsValid } = useValidation();
@@ -42,6 +42,8 @@ function Register({ onRegister, message, setIsError, setMessage }) {
         if (message) {
             setIsValid(false);
             setActiveMessage(message);
+        } else {
+            setActiveMessage('')
         }
     }, [message, setIsValid]);
 
@@ -75,7 +77,7 @@ function Register({ onRegister, message, setIsError, setMessage }) {
                         autoComplete="username"
                         onChange={handleChangeValues}
                     ></input>
-                    <span className="login__form-input_error">{errors.email || activeMessage || ''}</span>
+                    <span className="login__form-input_error">{errors.email || ''}</span>
                     <label className='login__form-text'>Пароль</label>
                     <input className="login__form-input"
                         name="password"
@@ -88,8 +90,9 @@ function Register({ onRegister, message, setIsError, setMessage }) {
                         autoComplete="current-password"
                     ></input>
                     <span className="login__form-input_error">{errors.password || ''}</span>
+                    <span className='login__error'>{activeMessage}</span>
                     <button className="login__btn" type="submit" onSubmit={handleSubmit}
-                        disabled={!isValid}>Зарегистрироваться</button>
+                        disabled={!isValid || isError || isSend}>Зарегистрироваться</button>
                 </form>
             </section>
         </main>

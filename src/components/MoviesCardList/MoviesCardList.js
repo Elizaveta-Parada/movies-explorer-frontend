@@ -13,7 +13,8 @@ import {
   StepMaxScreen,
   StepMediumScreen,
   StepSmallScreen,
-  InitLessMaxScreen
+  InitLessMaxScreen, 
+  LessScreen
 } from '../../utils/constants'
 
 function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, onClickRemove, addMovie, activeMessage }) {
@@ -22,6 +23,7 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
   const fact = filteredMovies.slice(0, count)
   const [notFound, setNotFound] = useState(false)
   const [message, setMessage] = useState('')
+  
 
   function printMovies() {
     const counter = { init: InitMoreMaxScreen, step: StepMaxScreen }
@@ -29,11 +31,17 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
       counter.init = InitLessMaxScreen
       counter.step = StepMediumScreen
     }
+
+    if (window.innerWidth < LessScreen) {
+      counter.init = InitMediumScreen
+      counter.step = StepSmallScreen
+    }
+
     if (window.innerWidth < MediumScreen) {
       counter.init = InitMediumScreen
       counter.step = StepSmallScreen
     }
-    if (window.innerWidth < SmallScreen) {
+    if (window.innerWidth <= SmallScreen) {
       counter.init = InitSmallScreen
       counter.step = StepSmallScreen
     }
@@ -67,12 +75,17 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
   }
 
   useEffect(() => {
-    if (fact.length !== 0 && filteredMovies.length !== 0) {
-      setNotFound(false);
-      setMessage('')
+    if (localStorage.allmovies) {
+      if (fact.length !== 0 && filteredMovies.length !== 0) {
+        setNotFound(false);
+        setMessage('')
+      } else {
+        setMessage('Ничего не найдено')
+        setNotFound(true)
+      }
     } else {
-      setMessage('Ничего не найдено')
       setNotFound(true)
+      setMessage('')
     }
   }, [fact, filteredMovies.length]);
 
@@ -84,19 +97,19 @@ function MoviesCardList({ filteredMovies, savedMovies, isLoading, serverError, o
       <ul className="movies__list">
         {isLoading ? <Preloader /> :
           (pathname === '/movies' && fact.lenght !== 0) ?
-            fact.map((data, id) => {
+            fact.map((data) => {
               return (<MoviesCard
                 data={data}
-                key={id}
+                key={data.id}
                 savedMovies={savedMovies}
                 addMovie={addMovie}
               />)
             }) :
             (filteredMovies.lenght !== 0) ?
-              filteredMovies.map((data, _id) => {
+              filteredMovies.map((data) => {
                 return (<MoviesCard
                   data={data}
-                  key={_id}
+                  key={data._id}
                   onClickRemove={onClickRemove}
                   addMovie={addMovie}
                 />)

@@ -17,9 +17,7 @@ function Techs() {
                 <li className='techs__list'>mongoDB</li>
             </ul>
         </section>
-
     )
-
 }
 
 export default Techs
